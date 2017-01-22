@@ -3,43 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <style>
-
-        .padding {
-            margin-bottom: 3px ;
-        }
-        .body {
-            padding: 34px ;
-            padding-left:4px;
-            padding-right:4px;
-        }
-
-    </style>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
 </head>
-<body class = "body">
-<div class = "container ">
-    <form action="forms.html">
-        <div class = "form-group">
-            <div class = "row padding">
-                <h4>Login</h4>
-            </div>
-            <div class ="row padding ">
-                <input type="text" class="col-xs-12 form-control" id="usr" placeholder="username">
-            </div>
-            <div class = "row padding">
-                <input type="password" class="col-xs-12 form-control" id="pwd" placeholder="password">
-            </div>
-            <div class = "row padding" >
-                <a href="#" class="btn col-xs-12 btn-primary form-control" id= "login" role="button">Login</a>
-            </div>
-            <div  class = "row " >
-                <a href="#" class="btn col-xs-12 btn-success form-control" id=" register" role="button">Register</a>
-            </div>
-        </div>
-
-    </form>
-
-</div>
+<body>
+    <div class="container col-xs-12">
+        <h1>Login</h1>
+        <form >
+        <input type="text"
+               class="form-control"
+               placeholder="username"/>
+        <input type="password"
+               class="form-control"
+               placeholder="password"/>
+        <a class="btn btn-primary btn-block"
+           href="profile.html">Login</a>
+        <a class="btn btn-success btn-block"
+           href="register.html">Register</a>
+    </div>
 </body>
 </html>
