@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .padding {
+            margin-bottom: 3px ;
+        }
+        .body {
+            padding: 100px;
+            padding-left: 4px;
+            padding-right: 4px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class = "body">
+<nav class="navbar navbar-default bg-primary navbar-fixed-top" >
+    <div class="container-fluid col-xs-12" >
+        <div class="navbar-header col-xs-3">
+            <a class="nav navbar-brand" href="#">Profile</a>
+        </div>
+        <ul class="nav navbar-nav pull-right">
+            <li><a href="#"><span class="glyphicon glyphicon-ok"></span> </a></li>
+        </ul>
+    </div>
+</nav>
+<div class = "container ">
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label for="usrname" class="col-sm-2 text-left control-label ">Username</label>
+            <div class="col-xs-12">
+                <input type="text" class="form-control" id="usrname" placeholder="User Name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 text-left control-label">Email</label>
+            <div class="col-xs-12">
+                <input type="email" class="form-control" id="inputEmail3" placeholder="Email@gmail.com">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="firstname" class="col-sm-2 control-label text-left">First Name</label>
+            <div class="col-xs-12">
+                <input type="text" class="form-control" id="firstname" placeholder="Sumit">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lastname" class="col-sm-2 control-label text-left">Last Name</label>
+            <div class="col-xs-12">
+                <input type="text" class="form-control" id="lastname" placeholder="Bhanwala">
+            </div>
+        </div>
+        <div class ="form-group">
+            <div class = "row padding" >
+                <a href="#" class="btn  btn-primary form-control" id= "website" role="button">Websites</a>
+            </div>
+            <div  class = "row" >
+                <a href="#" class="btn  btn-danger form-control" id="logout" role="button">Logout</a>
+            </div>
+        </div>
+    </form>
+</div>
+<nav class="navbar navbar-default bg-primary navbar-fixed-bottom" >
+    <div class="container-fluid col-xs-12" >
+        <ul class="nav navbar-nav pull-right">
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span> </a></li>
+        </ul>
+    </div>
+</nav>
+</body>
+</html>
