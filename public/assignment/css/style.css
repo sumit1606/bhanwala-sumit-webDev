@@ -42,6 +42,11 @@ body {
     border-color: #e7e7e7;
 }
 
+.panel-default {
+    background-color:#23527c;
+    border-color: #e7e7e7;
+}
+
 .navbar-default .navbar-brand {
     color: white;
 }
