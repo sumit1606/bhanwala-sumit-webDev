@@ -1,7 +1,114 @@
-input.form-control {
-    margin-bottom: 5px;
+input,
+textarea {
+    margin-bottom:5px;
 }
 
 body {
-    padding-top: 36px;
+    padding-top: 60px;
+    padding-bottom: 55px;
+}
+
+.no-left-padding {
+    padding-left: 0px;
+}
+
+.no-left-margin {
+    margin-left: 0px;
+}
+
+.wbdv-left-pane {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding-top: 15px;
+    overflow: auto;
+}
+.wbdv-right-pane {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    margin-bottom: 52px;
+    margin-top: 50px;
+    padding-left: 15px;
+    padding-right: 15px;
+    overflow-y: auto;
+}
+
+.navbar-default {
+    background-color:#23527c;
+    border-color: #e7e7e7;
+}
+
+.navbar-default .navbar-brand {
+    color: white;
+}
+
+.navbar a {
+    color: white;
+}
+
+
+.btn {
+    border-radius: 0px;
+}
+.jga-toolbar {
+    position: absolute;
+    right: 15px;
+    background-color: white;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    border-bottom-left-radius: 5px;
+    opacity: 0.7;
+}
+.borderremove
+{
+    border: none;
+}
+a { text-decoration: none !important}
+
+.marginRight
+{
+    margin-right: 30px;
+}
+.marginTop
+{
+    margin-top: 50px;
+}
+.paddingRight
+{
+    padding-right: 5px
+}
+
+.paddingTop
+{
+    padding-top: 15px
+}
+
+.borderLeft
+{
+    border-left: solid 1px
+}
+
+.marginLeft
+{
+    margin-left: 10px
+}
+.marginBottom
+{
+    margin-bottom: 50px;
+}
+.widgetContainer
+{
+    overflow-y: scroll ;
+    top: 0px ;
+    bottom: 0px;
+    position: absolute;
+    left: 0px ;
+}
+.paddingLeft
+{
+    padding-left: 5px ;
 }
