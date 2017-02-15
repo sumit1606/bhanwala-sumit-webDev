@@ -3,7 +3,7 @@
     <div class="row container-fluid">
         <div class="col-xs-7 ">
             <div class="navbar-header">
-                <a class="navbar-brand" >
+                <a class="navbar-brand" href ="#/profile/{{model.userId}}" >
                     Profile
                 </a>
             </div>
@@ -59,7 +59,7 @@
 
         <!-- have to change this function as it is still referncing to the old way of referencing-->
         <a class="btn btn-primary btn-block"
-           href="../../website/website-list.html">Websites</a>
+           href="#/user/{{model.user._id}}/website">Websites</a>
 
         <!--calling to update the parameters which are newly supplied-->
         <a ng-click="model.update(model.user)"

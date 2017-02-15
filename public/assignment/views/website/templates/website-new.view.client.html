@@ -1,18 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Website Edit</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../css/style.css" rel="stylesheet"/>
-</head>
-<body>
+
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="row container-fluid">
         <div class="col-sm-4 hidden-xs">
             <div class="navbar-text pull-left">
-                <a href="website-list.html">
+                <a href="website-list.view.client.html">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </div>
@@ -20,27 +11,26 @@
                 <a class="navbar-brand" href="#">Websites</a>
             </div>
             <div class="navbar-text pull-right">
-                <a>
+                <a href="#">
                     <span class="glyphicon glyphicon-plus"></span>
                 </a>
             </div>
         </div>
         <div class="col-sm-8">
             <div class="navbar-text pull-left visible-xs">
-                <a href="website-list.html">
+                <a href="website-list.view.client.html">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </div>
 
             <div class="navbar-text pull-right">
-                <a href="website-list.html">
+                <a href="website-list.view.client.html">
                     <span class="glyphicon glyphicon-ok"></span>
                 </a>
             </div>
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">Edit Website</a>
+                <a class="navbar-brand" href="#">New Website</a>
             </div>
-
         </div>
     </div>
 </nav>
@@ -48,13 +38,12 @@
 <div class="row container-fluid">
     <div class="col-sm-4 hidden-xs wbdv-left-pane">
         <div class="panel panel-primary">
-            <!-- Default panel contents -->
             <ul class="list-group">
                 <li class="list-group-item">
                     <a href="#">
                         Blogging App
                     </a>
-                    <a href="website-edit.html" class="pull-right">
+                    <a href="website-edit.view.client.html" class="pull-right">
                         <span class="glyphicon glyphicon-cog"></span>
                     </a>
                 </li>
@@ -62,40 +51,33 @@
                     <a href="#">
                         Address Book App
                     </a>
-                    <a href="website-edit.html" class="pull-right">
+                    <a href="website-edit.view.client.html" class="pull-right">
                         <span class="glyphicon glyphicon-cog"></span>
                     </a>
                 </li><li class="list-group-item">
                 <a href="#">
                     Script Testing App
                 </a>
-                <a href="website-edit.html" class="pull-right">
+                <a href="website-edit.view.client.html" class="pull-right">
                     <span class="glyphicon glyphicon-cog"></span>
                 </a>
             </li><li class="list-group-item">
                 <a href="#">
                     Blogger
                 </a>
-                <a href="website-edit.html" class="pull-right">
+                <a href="website-edit.view.client.html" class="pull-right">
                     <span class="glyphicon glyphicon-cog"></span>
                 </a>
             </li>
             </ul>
         </div>
-
     </div>
     <div class="col-xs-12 col-sm-8 wbdv-right-pane paddingTop borderLeft"  >
-
         <label for="name">Website Name</label>
-        <input class="form-control" id="name" placeholder="Website Name" value="Blogger">
+        <input class="form-control" id="name" placeholder="Website Name">
 
         <label for="description">Website Description</label>
-        <textarea class="form-control" id="description" rows="5" placeholder="Description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut laboreet dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisiut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore eu fugiat nulla pariatur.
-        </textarea>
-
-
-        <a class="btn btn-danger btn-block"
-           href="website-list.html">Delete</a>
+        <textarea class="form-control" id="description" rows="5" placeholder="Description"></textarea>
 
     </div>
 </div>
@@ -110,6 +92,3 @@
         </div>
     </div>
 </nav>
-
-</body>
-</html>
