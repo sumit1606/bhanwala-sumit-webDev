@@ -1,0 +1,58 @@
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="row container-fluid">
+        <div class="col-xs-7 ">
+            <!-- fix below one too but later -->
+            <div class="navbar-text pull-left">
+                <a href="#/user/{{model.userId}}/website">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand"
+                   href="#/user/{{model.userId}}/website/{{model.websiteid}}/page">
+                    Pages
+                </a>
+            </div>
+        </div>
+            <div class="navbar-text pull-right marginRight" >
+                <a href="#/user/{{model.userId}}/website/{{model.websiteid}}/page/new">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </a>
+            </div>
+    </div>
+</nav>
+<!-- tad this below mentioned style c should go in a seperate css file and should be relative-->
+<div class="row container-fluid">
+    <div class="col-xs-12 "
+         style="overflow-y: scroll;top: 0px;bottom: 0px;position: absolute;left: 0px;margin-top: 50px;padding-top: 15px;margin-bottom: 50px;">
+        <ul class="list-group" >
+            <li ng-repeat="page in model.pages" class="list-group-item">
+
+                <div class="row">
+                    <div class="col-xs-11 col-sm-6">
+                        <!-- below one should redirecting to the widget  -->
+                        <a href="#/user/{{model.userId}}/website/{{model.websiteid}}/page/{{page._id}}/widget">
+                            {{page.name}}
+                        </a>
+                    </div>
+                    <div class="col-xs-1 pull-right">
+                        <a href="#/user/{{model.userId}}/website/{{model.websiteid}}/page/{{page._id}}">
+                            <span class="glyphicon glyphicon-cog pull-right"></span>
+                        </a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+
+    <nav class="navbar navbar-default navbar-fixed-bottom ">
+        <div class="container-fluid">
+            <div class="navbar-text pull-right paddingRight" >
+                <a href="../views/user/templates/profile.view.client.html">
+                    <span class="glyphicon glyphicon-user"></span>
+                </a>
+            </div>
+        </div>
+    </nav>

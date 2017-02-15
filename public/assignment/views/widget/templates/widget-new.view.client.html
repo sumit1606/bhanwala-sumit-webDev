@@ -1,0 +1,79 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="row container-fluid">
+        <div class="col-sm-4 col-xs-2">
+            <div class="navbar-text pull-left">
+                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="navbar-link">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+            </div>
+
+            <div class="navbar-header hidden-xs">
+                <a class="navbar-brand">Choose A Widget</a>
+            </div>
+        </div>
+        <div class="col-sm-8 col-xs-10">
+            <div class="row">
+                <div class="col-xs-8">
+                    <div class="navbar-header">
+                        <a class="navbar-brand no-left-padding">New Widget</a>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="navbar-text pull-right">
+                        <a ng-click="model.createNewWidget()" class="navbar-link">
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-4 hidden-xs wbdv-left-pane">
+
+            <ul class="list-group">
+                <li ng-repeat="widget in model.availableWidgets" class="list-group-item">
+                    <div class="">
+                        <a ng-href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new/{{widget.widgetType}}">
+                            {{widget.label}}
+                        </a>
+
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+        <div class="col-sm-8 col-xs-12 wbdv-right-pane">
+            <div ng-show="model.error"
+                 class="alert alert-danger webdev-component-shift-down"
+                 role="alert">
+                {{model.error}}
+            </div>
+            <div ng-show="model.success"
+                 class="alert alert-success webdev-component-shift-down"
+                 role="alert">
+                {{model.success}}
+            </div>
+
+            <ng-include src="model.getEditorTemplateUrl(model.widget.widgetType)">
+
+            </ng-include>
+        </div>
+    </div>
+</div>
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="row container-fluid">
+        <div class="col-xs-12">
+            <div class="navbar-text pull-right">
+                <a href="#/user/{{model.userId}}" class="navbar-link">
+                    <span class="glyphicon glyphicon-user"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>

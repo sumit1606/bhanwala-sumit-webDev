@@ -16,7 +16,8 @@
             "createWebsite": createWebsite,
             "findWebsiteById": findWebsiteById,
             "deleteWebsite": deleteWebsite,
-            "findAllWebsitesForUser": findAllWebsitesForUser
+            "findAllWebsitesForUser": findAllWebsitesForUser,
+            "updateWebsite" : updateWebsite
         };
         return api;
 
@@ -36,9 +37,22 @@
             }
         }
 
+        function updateWebsite(websiteId , website) {
+            for(var w in websites) {
+                var currWebsite = websites[w];
+                if( websiteId === currWebsite._id ) {
+                    websites[w].name = website.name;
+                    websites[w].description = website.description;
+                    return websites[w];
+                }
+            }
+            return null;
+        }
+
         function createWebsite(userId, website) {
             website.developerId = userId;
-            website._id = (new Date()).getTime();
+            website._id = ((new Date()).getTime()).toString();
+            website.created = new Date();
             websites.push(website);
         }
 

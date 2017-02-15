@@ -1,0 +1,73 @@
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-text pull-left">
+            <a href="#">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+        </div>
+        <div class="navbar-text pull-right">
+            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new">
+                <span class="glyphicon glyphicon-plus"></span>
+            </a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand"
+               href="#">Widgets</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div ng-repeat="widget in model.widgets">
+        <div class="jga-toolbar">
+            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
+                <span class="glyphicon glyphicon-cog"></span>
+            </a>
+            <span class="glyphicon glyphicon-align-justify"></span>
+        </div>
+
+        <div ng-switch="widget.widgetType">
+            <div ng-switch-when="HEADER">
+                <div ng-switch="widget.size">
+                    <h1 ng-switch-when="1">{{widget.text}} {{widget.size}}</h1>
+                    <h2 ng-switch-when="2">{{widget.text}} {{widget.size}}</h2>
+                    <h3 ng-switch-when="3">{{widget.text}} {{widget.size}}</h3>
+                    <h4 ng-switch-when="4">{{widget.text}} {{widget.size}}</h4>
+                    <h5 ng-switch-when="5">{{widget.text}} {{widget.size}}</h5>
+                    <h6 ng-switch-when="6">{{widget.text}} {{widget.size}}</h6>
+                </div>
+            </div>
+            <div ng-switch-when="IMAGE">
+                <img ng-src="{{widget.url}}" width="{{widget.width}}"/>
+            </div>
+            <div ng-switch-when="HTML">
+                <div ng-bind-html="model.getTrustedHtml(widget.text)"></div>
+            </div>
+            <div ng-switch-when="YOUTUBE">
+               <iframe width="100%" src="{{model.getYouTubeEmbedUrl(widget.url)}}" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom ">
+    <div class="container-fluid">
+
+        <div class="navbar-text pull-right" >
+            <a href="../views/user/templates/profile.view.client.html">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
+        </div>
+        <div class="navbar-text paddingLeft" >
+            <a>
+                <span class="glyphicon glyphicon-play"></span>
+            </a>
+            <a class="paddingLeft">
+                <span class="glyphicon glyphicon-eye-open"></span>
+            </a>
+        </div>
+        <div class="navbar-text" >
+        </div>
+    </div>
+</nav>
