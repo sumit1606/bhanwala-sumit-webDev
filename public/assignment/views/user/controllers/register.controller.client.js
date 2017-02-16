@@ -19,6 +19,7 @@
             $location.url('/user/' + user_id);
         }
 
+
     }
 
 })();
