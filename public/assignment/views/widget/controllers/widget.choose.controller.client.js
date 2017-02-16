@@ -7,14 +7,13 @@
         .module("WebAppMaker")
         .controller("WidgetChooseController", WidgetChooseController);
 
-    function WidgetChooseController($routeParams, WidgetService) {
+    function WidgetChooseController($routeParams) {
 
         var vm = this;
         vm.userId = $routeParams['uid'];
         vm.websiteId = $routeParams['wid'];
         vm.pageId = $routeParams['pid'];
-
-        vm.availableWidgets = [
+        vm.currentWidgets = [
             {
                 "widgetType":"HEADER",
                 "label":"Header"
@@ -30,10 +29,6 @@
             }
         ]
 
-        function getWidgetTemplateUrl(widgetType) {
-            var url = 'views/widget/templates/widget-'+widgetType+'.view.client.html';
-            return url;
-        }
     }
 
 })();

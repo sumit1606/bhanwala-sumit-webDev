@@ -20,7 +20,7 @@
 
 <div class="container-fluid">
     <ul class="list-group">
-        <li ng-repeat="widget in model.availableWidgets" class="list-group-item">
+        <li ng-repeat="widget in model.currentWidgets" class="list-group-item">
             <div>
                 <a  ng-href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new/{{widget.widgetType}}">
                     {{widget.label}}

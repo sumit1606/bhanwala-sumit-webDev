@@ -5,15 +5,12 @@
         .module("WebAppMaker")
         .controller("WidgetEditController", WidgetEditController);
 
-    function WidgetEditController($routeParams, WidgetService, $location,$timeout) {
+    function WidgetEditController($routeParams, WidgetService, $location) {
         var vm = this;
         vm.userId = $routeParams.uid;
         vm.websiteId = $routeParams.wid;
         vm.pageId = $routeParams.pid;
         vm.widgetId = $routeParams.wgid;
-        vm.imageWidthOptions = ["10%","20%","30%","40%","50%","60%","70%","80%","90%","100%"];
-        vm.youtubeWidthOptions = ["10%","20%","30%","40%","50%","60%","70%","80%","90%","100%"];
-        vm.headerSizeOptions = [1,2,3,4,5,6];
         vm.deleteWidget = deleteWidget ;
         vm.getEditorTemplateUrl = getEditorTemplateUrl;
         vm.updateWidget = updateWidget;
