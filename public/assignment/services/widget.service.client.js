@@ -54,34 +54,30 @@
         }
 
         function createWidget(pageNewId,newWidget) {
-            var today = new Date();
-            var time = today.getDate() + today.getFullYear() + today.getMonth() + today.getHours() + today.getMinutes() + today.getSeconds();
-            time = time.toString();
-            try {
+            var widgetid = ((new Date()).getTime()).toString();
                 if (newWidget.widgetType === "HEADER") {
-
                     var widget_new = {
-                        _id: time,
+                        _id: widgetid ,
                         pageId: pageNewId,
                         size: newWidget.size,
                         text: newWidget.text,
                         widgetType: newWidget.widgetType
                     }
                 }
-                if (newWidget.widgetType === "Image") {
-
+                if (newWidget.widgetType === "IMAGE") {
                     var widget_new = {
-                        _id: time,
+                        _id: widgetid,
                         pageId: pageNewId,
                         width: newWidget.width,
                         url: newWidget.url,
+                        text: newWidget.title,
                         widgetType: newWidget.widgetType
                     }
                 }
                 if (newWidget.widgetType === "HTML") {
 
                     var widget_new = {
-                        _id: time,
+                        _id: widgetid,
                         pageId: pageNewId,
                         text: newWidget.text,
                         widgetType: newWidget.widgetType
@@ -89,25 +85,16 @@
                 }
                 if (newWidget.widgetType === "YOUTUBE") {
                     var widget_new = {
-                        _id: time,
+                        _id: widgetid,
                         pageId: pageNewId,
                         width: newWidget.width,
                         url: newWidget.url,
                         widgetType: newWidget.widgetType
                     }
                 }
-
                 widgets.push(widget_new);
-                return time;
-            }
-            catch (err){
-                return null;
-            }
 
         }
-
-
-
 
         function updateWidget(widgetId, newWidget) {
             for (var w in widgets) {
@@ -135,7 +122,6 @@
             return null;
         }
 
-
         function findWidgetById(widgetId) {
             for(var w in widgets) {
                 if(widgets[w]._id === widgetId) {
@@ -146,7 +132,7 @@
         }
 
         function findWidgetsByPageId(pid) {
-            widgetList = []
+            var widgetList = []
             for(var w in widgets) {
                 if(widgets[w].pageId === pid) {
                     widgetList.push(widgets[w])

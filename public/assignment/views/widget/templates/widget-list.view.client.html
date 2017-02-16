@@ -2,7 +2,7 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-text pull-left">
-            <a href="#">
+            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page">
                 <span class="glyphicon glyphicon-chevron-left"></span>
             </a>
         </div>
@@ -12,8 +12,7 @@
             </a>
         </div>
         <div class="navbar-header">
-            <a class="navbar-brand"
-               href="#">Widgets</a>
+            <a class="navbar-brand">Widgets</a>
         </div>
     </div>
 </nav>
@@ -55,7 +54,7 @@
     <div class="container-fluid">
 
         <div class="navbar-text pull-right" >
-            <a href="../views/user/templates/profile.view.client.html">
+            <a href="#/user/{{model.userId}}">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
         </div>

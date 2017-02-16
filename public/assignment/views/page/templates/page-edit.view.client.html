@@ -3,22 +3,22 @@
     <div class="row container-fluid">
         <div class="col-sm-4 hidden-xs">
             <div class="navbar-text pull-left">
-                <a href="st.html">
+                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </div>
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">Pages</a>
+                <a class="navbar-brand" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page">Pages</a>
             </div>
             <div class="navbar-text pull-right">
-                <a href="#">
+                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/new">
                     <span class="glyphicon glyphicon-plus"></span>
                 </a>
             </div>
         </div>
         <div class="col-sm-8">
             <div class="navbar-text pull-left visible-xs">
-                <a href="st.html">
+                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </div>
@@ -29,7 +29,7 @@
                 </a>
             </div>
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">Edit Page</a>
+                <a class="navbar-brand" >Edit Page</a>
             </div>
 
         </div>
@@ -38,7 +38,7 @@
 
 <div class="row container-fluid">
     <div class="col-sm-4 hidden-xs wbdv-left-pane ">
-        <div class="panel panel-default">
+        <div  class="panel panel-default">
             <ul class="list-group">
                 <li ng-repeat="page in model.pages" class="list-group-item">
                     <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}/widget">
@@ -76,7 +76,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom ">
     <div class="container-fluid">
         <div class="navbar-text pull-right paddingRight">
-            <a href="../views/user/templates/profile.view.client.html">
+            <a href="#/user/{{model.userId}}">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
         </div>

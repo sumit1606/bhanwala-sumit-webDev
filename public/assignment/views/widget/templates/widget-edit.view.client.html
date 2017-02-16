@@ -28,16 +28,7 @@
 
 <div class="container-fluid">
 
-    <div ng-show="model.error"
-         class="alert alert-danger webdev-component-shift-down"
-         role="alert">
-        {{model.error}}
-    </div>
-    <div ng-show="model.success"
-         class="alert alert-success webdev-component-shift-down"
-         role="alert">
-        {{model.success}}
-    </div>
+    <!-- fetching the widget from the data -->
 
     <ng-include src="model.getEditorTemplateUrl(model.widget.widgetType)">
 

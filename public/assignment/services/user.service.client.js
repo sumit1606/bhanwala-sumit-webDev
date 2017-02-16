@@ -27,13 +27,20 @@
         }
         return api;
 
-        // will implement these method later in the later stages
-        function createUser() {
 
+        function createUser(user) {
+            var id= ((new Date()).getTime()).toString();
+            users.push({"_id":id ,"username" : user.username,"password":user.password,"firstName": "random","email": "random@random.com",
+                "lastName":"lastname"})
+            return id ;
         }
 
-        function deleteUser() {
-
+        function deleteUser(user) {
+            for (var u in users){
+                if (users[u]._id == user._id){
+                    users.splice(u,1);
+                }
+            }
         }
 
         function findUserById(userId) {

@@ -47,19 +47,7 @@
 
         </div>
         <div class="col-sm-8 col-xs-12 wbdv-right-pane">
-            <div ng-show="model.error"
-                 class="alert alert-danger webdev-component-shift-down"
-                 role="alert">
-                {{model.error}}
-            </div>
-            <div ng-show="model.success"
-                 class="alert alert-success webdev-component-shift-down"
-                 role="alert">
-                {{model.success}}
-            </div>
-
             <ng-include src="model.getEditorTemplateUrl(model.widget.widgetType)">
-
             </ng-include>
         </div>
     </div>

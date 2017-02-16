@@ -1,3 +1,24 @@
-<h1>IMAGE Editor</h1>
+    <form style="margin-top: 10px"s>
+        <label for="pagename"> Name </label>
+        <input  ng-model="model.widget.name" type ="text" class = "form-control"id="pagename" placeholder="Blog Post">
 
-{{model.widget}}
+        <label for="title"> Text </label>
+        <input ng-model="model.widget.title" type ="text" class = "form-control"id="title" placeholder="Page Title">
+
+        <label for="url"> URL </label>
+        <input ng-model="model.widget.url" type ="url" class = "form-control"id="url" placeholder="https://www.google.com" >
+
+        <label for="width"> Width </label>
+        <input ng-model="model.widget.width" type ="text" class = "form-control"id="width" placeholder="enter width size">
+
+        <label for="fileupload"> Upload </label>
+        <input type ="file" class = "form-control"id="fileupload" placeholder="No file choosen">
+
+        <a class="btn btn-info  btn-block"
+           >Upload Image</a>
+
+        <a  ng-show="model.widget._id"
+            ng-click = "model.deleteWidget()"
+            class="btn btn-danger btn-block">
+                Delete</a>
+    </form>

@@ -1,55 +1,12 @@
+<h1>HTML Editor</h1>
 
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="row container-fluid">
-        <div class="col-xs-7 ">
-            <div class="navbar-text pull-left " >
-                <a href="widget-list.view.client.html">
-                    <span class="glyphicon glyphicon-chevron-left"></span>
-                </a>
-            </div>
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">
-                    Widget Edit
-                </a>
-            </div>
-        </div>
-        <div class="navbar-text pull-right marginRight" >
-            <a href="widget-list.view.client.html">
-                <span class="glyphicon glyphicon-ok"></span>
-            </a>
-        </div>
-    </div>
-</nav>
-<div class = "container-fluid col-xs-12 marginBottom paddingTop marginTop widgetContainer" >
-    <form>
-        <label for="pagename"> Name </label>
-        <input type ="text" class = "form-control"id="pagename" placeholder="Blog Post">
+<label>Name</label>
+<input ng-model="model.widget.name" class="form-control"/>
 
-        <label for="title"> Text </label>
-        <input type ="text" class = "form-control"id="title" placeholder="Page Title">
+<label>Text</label>
+<input ng-model="model.widget.text" class="form-control" placeholder="Please enter html tag you want to embbed"/>
 
-        <label for="url"> URL </label>
-        <input type ="url" class = "form-control"id="url" placeholder="https://www.google.com" value="https://www.google.com">
-
-        <label for="width"> Width </label>
-        <input type ="text" class = "form-control"id="width" placeholder="enter width size" value="100%">
-
-        <label for="fileupload"> Upload </label>
-        <input type ="file" class = "form-control"id="fileupload" placeholder="No file choosen">
-
-        <a class="btn btn-info  btn-block"
-           href="#">Upload Image</a>
-
-        <a class="btn btn-danger btn-block"
-           href="widget-list.view.client.html">Delete</a>
-    </form>
-</div>
-<nav class="navbar navbar-default navbar-fixed-bottom ">
-    <div class="container-fluid">
-        <div class="navbar-text pull-right paddingRight" >
-            <a href="../views/user/templates/profile.view.client.html">
-                <span class="glyphicon glyphicon-user"></span>
-            </a>
-        </div>
-    </div>
-</nav>
+<a ng-show="model.widget._id"
+   ng-click = "model.deleteWidget()"
+   class="btn btn-danger btn-block"s>
+    Delete</a>

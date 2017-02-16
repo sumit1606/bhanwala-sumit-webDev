@@ -43,7 +43,7 @@
             <!-- Default panel contents -->
             <ul class="list-group">
                 <li ng-repeat="website in model.websites" class="list-group-item">
-                <a href="#">
+                <a href="#/user/{{model.userId}}/website/{{website._id}}/page">
                     {{website.name}}
                 </a>
                 <a  href="#/user/{{model.userId}}/website/{{website._id}}"
@@ -82,7 +82,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom ">
     <div class="container-fluid">
         <div class="navbar-text pull-right paddingRight" >
-            <a href="../views/user/templates/profile.view.client.html">
+            <a href="#/user/{{model.userId}}">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
         </div>

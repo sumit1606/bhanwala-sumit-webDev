@@ -19,7 +19,6 @@
         // verify whether the user exists in the database or not
         function login(userId, password) {
             var loginUser = UserService.findUserByCredentials(userId, password);
-            console.log(loginUser)
             if (loginUser != null) {
                 $location.url('/user/' + loginUser._id);
             }
