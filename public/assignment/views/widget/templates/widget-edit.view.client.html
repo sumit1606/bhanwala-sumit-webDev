@@ -9,7 +9,7 @@
         </div>
 
         <div class="navbar-text pull-right">
-            <a ng-click="model.updateWidget()" class="navbar-link">
+            <a ng-click="model.updateWidget()" >
                   <span class="glyphicon glyphicon-ok">
                   </span>
             </a>
@@ -35,14 +35,13 @@
     </ng-include>
 </div>
 
-<nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="row container-fluid">
-        <div class="col-xs-12">
-            <div class="navbar-text pull-right">
-                <a href="#/user/{{model.userId}}" class="navbar-link">
-                    <span class="glyphicon glyphicon-user"></span>
-                </a>
-            </div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom ">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right" >
+            <a href="#/user/{{model.userId}}">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
         </div>
     </div>
 </nav>
