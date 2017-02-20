@@ -8,7 +8,7 @@
     angular
         .module("WebAppMaker")
         .factory("UserService" ,userService)
-    function userService() {
+    function userService($http) {
         var users = [
             {_id: "123", username: "alice",    password: "alice",    firstName: "Alice", email: "alice@alice.com", lastName: "Wonder"  },
             {_id: "234", username: "bob",      password: "bob",      firstName: "Bob", email: "bob@bob.com",   lastName: "Marley"  },
@@ -64,14 +64,9 @@
         }
 
         function findUserByCredentials(username , password) {
-            for(var u in users){
-                var user = users[u];
-                var userId = user.username;
-                var userPassword = user.password;
-                if(userId == username && userPassword == password)
-                    return angular.copy(user) ;
-            }
-                return null ;
+            // calling the api on the server tp fetch data from the server
+            // rather that from the local instance
+            $http.get("/api/user?username="+username+"&password="+password);
         }
 
         function updateUser(userId , newUser) {

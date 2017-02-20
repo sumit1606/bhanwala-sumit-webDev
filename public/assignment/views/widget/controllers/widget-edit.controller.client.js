@@ -1,5 +1,10 @@
 /**
+<<<<<<< Updated upstream
  * Created by sumitbhanwala on 2/15/17.*/
+=======
+ * Created by sumitbhanwala on 2/15/17.
+ */
+>>>>>>> Stashed changes
 (function(){
     angular
         .module("WebAppMaker")
@@ -11,7 +16,13 @@
         vm.websiteId = $routeParams.wid;
         vm.pageId = $routeParams.pid;
         vm.widgetId = $routeParams.wgid;
+<<<<<<< Updated upstream
         vm.deleteWidget = deleteWidget ;
+=======
+        vm.headerSizeOptions = [1,2,3,4,5,6];
+
+
+>>>>>>> Stashed changes
         vm.getEditorTemplateUrl = getEditorTemplateUrl;
         vm.updateWidget = updateWidget;
 

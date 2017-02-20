@@ -11,7 +11,8 @@
         vm.websiteid = $routeParams.wid ;
         vm.pages = PageService.findPageByWebsiteId(vm.websiteid);
         vm.pageId = $routeParams.pid;
-        vm.userId = $routeParams.uid;
+        vm.userId = $routeParams["uid"];
+        console.log(vm.userId);
         vm.createPage = createPage;
 
         function init() {
