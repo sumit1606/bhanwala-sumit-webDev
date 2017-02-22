@@ -16,15 +16,20 @@
         init();
 
         // function for invoking web service at the backend which will
-        // verify whether the user exists in the database or not
+        // verify whether the user exists in the database or not function called is UserService in the service
+        // on the front end side which will call the app.js on the service which will call on the further service
+        // specialized for the backend side
         function login(userId, password) {
-            var loginUser = UserService.findUserByCredentials(userId, password);
-            if (loginUser != null) {
-                $location.url('/user/' + loginUser._id);
-            }
-            else {
-                vm.error = "User Not found";
-            }
+            var promise = UserService.findUserByCredentials(userId, password);
+            promise.success(function(user) {
+                    if(user)
+                    {
+                        $location.url("/user/"+user._id);
+                    }
+                    else {
+                    vm.error = "User Not found";
+                }
+            })
         }
 
     }

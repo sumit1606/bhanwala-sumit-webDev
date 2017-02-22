@@ -10,8 +10,8 @@
         var vm = this;
         var userId = $routeParams['uid'];
         vm.deleteUser = deleteUser ;
-        vm.update = function (newUser) {
 
+        vm.update = function (newUser) {
             var user = UserService.updateUser(userId, newUser);
             if(user == null) {
                 vm.error = "unable to update user";
@@ -21,13 +21,27 @@
         };
 
         function deleteUser() {
-            UserService.deleteUser(vm.user);
-            $location.url('/login');
+            console.log("inside delete func");
+            var promise =  UserService.deleteUser(userId);
+            promise
+                .success(function(user) {
+                    $location.url('/login');
+                })
         }
 
-        var user = UserService.findUserById(userId);
-        vm.user = user;
-        vm.userId = userId ;
+        function init() {
+            var promise = UserService.findUserById(userId);
+            promise.success(function(user) {
+                if(user)
+                {
+                    vm.user = user;
+                    vm.userId = userId ;
+                }
+                 else {
+                     vm.error = "User Not found";
+                 }
+            })
+        }
+        init();
     }
-
 })();
