@@ -11,9 +11,20 @@
         vm.updateWebsite  = updateWebsite;
 
         function init() {
-            vm.websites = WebsiteService.findAllWebsitesForUser(vm.userId);
-            vm.website = WebsiteService.findWebsiteById(vm.websiteId);
-
+            var promise = WebsiteService.findAllWebsitesForUser(vm.userId);
+            promise.success(function (user) {
+                vm.websites = user ;
+            })
+            promise.error(function (user) {
+                vm.websites = null ;
+            })
+            var promise = WebsiteService.findWebsiteById(vm.websiteId);
+            promise.success(function (user) {
+                vm.website = user ;
+            })
+            promise.error(function (user) {
+                vm.website = null ;
+            })
         }
         init();
         function deleteWebsite () {

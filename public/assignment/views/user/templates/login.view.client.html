@@ -3,16 +3,26 @@
     <div  ng-show="model.error" class="alert alert-danger" role="alert">
         {{model.error}}
     </div>
-
-        <form >
-        <input  type="text"
+    <div  ng-show= "userForm.userInput.$invalid && !userForm.userInput.$pristine"
+          class="alert alert-danger" role="alert">
+          User Name is required
+    </div>
+    <div  ng-show= "userForm.InputPass.$invalid && !userForm.InputPass.$pristine"
+          class="alert alert-danger" role="alert">
+          Pass Word is required
+    </div>
+        <form name = "userForm" >
+        <input type="text"
                class="form-control"
                placeholder="username"
-            ng-model="username"/>
+            ng-model="username"
+            required
+            name = "userInput"/>
         <input type="password"
                class="form-control"
                placeholder="password"
-            ng-model="password"/>
+            ng-model="password"
+            required name = "InputPass"/>
         <a class="btn btn-primary btn-block"
            ng-click="model.login(username,password)">Login</a>
         <a class="btn btn-success btn-block"

@@ -10,6 +10,12 @@
         var vm = this;
         vm.websiteid = $routeParams.wid ;
         vm.userId = $routeParams.uid;
-        vm.pages = PageService.findPageByWebsiteId(vm.websiteid);
+        var promise = PageService.findPageByWebsiteId(vm.websiteid);
+        promise.success(function (pages) {
+            vm.pages = pages;
+        })
+        promise.error(function (pages) {
+            Console.log("was unable to retrive pages due to some issues");
+        })
     }
 })();

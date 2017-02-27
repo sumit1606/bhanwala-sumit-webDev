@@ -9,13 +9,25 @@
         vm.createWebsite = createWebsite;
 
         function init() {
-            vm.websites = WebsiteService.findAllWebsitesForUser(vm.userId);
+            var promise = WebsiteService.findAllWebsitesForUser(vm.userId);
+            promise.success(function (user) {
+                vm.websites = user ;
+            })
+            promise.error(function (user) {
+                vm.websites = null ;
+            })
         }
         init();
 
         function createWebsite (website) {
             WebsiteService.createWebsite(vm.userId, website);
-            vm.websites = WebsiteService.findAllWebsitesForUser(vm.userId);
+            var promise = WebsiteService.findAllWebsitesForUser(vm.userId);
+            promise.success(function (user) {
+                vm.websites = user ;
+            })
+            promise.error(function (user) {
+                vm.websites = null ;
+            })
             $location.url("/user/"+vm.userId+"/website");
         };
     }

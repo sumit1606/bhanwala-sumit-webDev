@@ -23,11 +23,7 @@ module.exports = function (app) {
         {
             if(users[user]._id == userId)
             {
-                console.log("user before splicing");
-                console.log(users);
                 users.splice(user , 1);
-                console.log("users after splicing");
-                console.log(users);
                 return res.send(200);
             }
         }

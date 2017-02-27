@@ -8,6 +8,7 @@
     angular
         .module("WebAppMaker")
         .factory("UserService" ,userService)
+
     function userService($http) {
         var api = {
             "createUser" : createUser,

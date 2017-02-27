@@ -16,13 +16,26 @@
         vm.createPage = createPage;
 
         function init() {
-            vm.pages = PageService.findPageByWebsiteId(vm.websiteid);
+            var promise = PageService.findPageByWebsiteId(vm.websiteid);
+            promise.success(function (user) {
+                vm.pages = user ;
+            })
+            promise.error(function (user) {
+                vm.pages = null ;
+            })
         }
         init();
 
         function createPage (page) {
             PageService.createPage(vm.websiteid, page);
-            vm.pages = PageService.findPageByWebsiteId(vm.websiteid);
+            var promise  = PageService.findPageByWebsiteId(vm.websiteid);
+            promise.success(function (user) {
+                vm.pages = user ;
+            })
+            promise.error(function (user) {
+                vm.pages = null ;
+            })
+
             $location.url("/user/"+vm.userId+"/website/"+ vm.websiteid+ "/page");
         };
     }
