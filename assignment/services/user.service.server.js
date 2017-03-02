@@ -17,6 +17,7 @@ module.exports = function (app) {
     app.put("/api/user/:userId",updateUser);
     app.delete("/api/user/:userId",deleteUser);
 
+
     function deleteUser (req ,res) {
         var userId = req.params.userId;
         for(var user in users)

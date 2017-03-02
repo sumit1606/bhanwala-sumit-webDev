@@ -16,16 +16,12 @@
         init();
 
         function createUser() {
-            // will handle the already existing user scenario later on
             var promise = UserService.createUser(vm.user);
-            promise
-                .success(function (user) {
+            promise.success(function (user) {
                         userId = user._id;
                         $location.url('/user/' + userId);
                     }
-                        .error(function (error) {
 
-                        })
                 )
         }
 
