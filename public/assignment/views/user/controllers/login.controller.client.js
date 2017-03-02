@@ -22,13 +22,13 @@
         function login(userId, password) {
             var promise = UserService.findUserByCredentials(userId, password);
             promise.success(function(user) {
-                    if(user)
-                    {
+                        if(user)
                         $location.url("/user/"+user._id);
-                    }
-                    else {
-                    vm.error = "User Not found";
-                }
+                        else
+                            vm.error = "User Not found";
+            })
+            promise.error(function (user) {
+                vm.error = "User Not found";
             })
         }
 

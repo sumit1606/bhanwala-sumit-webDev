@@ -21,8 +21,11 @@
                         userId = user._id;
                         $location.url('/user/' + userId);
                     }
-
                 )
+            promise.error(function (user) {
+                console.log(404);
+            })
+
         }
 
     }

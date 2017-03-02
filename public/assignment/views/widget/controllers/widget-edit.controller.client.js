@@ -18,8 +18,6 @@
                 .error(function (widget) {
                 console.log("error");
                 })
-
-
         }
         init();
         vm.userId = $routeParams.uid;

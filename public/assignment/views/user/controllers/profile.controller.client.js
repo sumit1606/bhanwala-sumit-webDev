@@ -32,14 +32,12 @@
         function init() {
             var promise = UserService.findUserById(userId);
             promise.success(function(user) {
-                if(user)
-                {
                     vm.user = user;
                     vm.userId = userId ;
-                }
-                 else {
-                     vm.error = "User Not found";
-                 }
+
+            })
+            promise.error(function (user) {
+                vm.error = "User Not found";
             })
         }
         init();
