@@ -151,7 +151,6 @@ module.exports = function (app) {
                 }
             }
             widgets.push(widget_new);
-        console.log("the wiget is" + widget_new );
             res.sendStatus(200);
 
     }
@@ -184,33 +183,47 @@ module.exports = function (app) {
             cb(null, __dirname + "/../../public/uploads")
         },
         filename: function (req, file, cb) {
-            var extArray = file.mimetype.split("/");
-            console.log(extArray);
-            var extension = extArray[extArray.length - 1];
-            cb(null, 'widget_image_' + Date.now() + '.' + extension)
+            var array = file.mimetype.split("/");
+            var ext = array[array.length - 1];
+            cb(null, 'image_widget' + ((new Date()).getTime()).toString() + '.' + ext);
         }
     });
     var upload = multer({storage: storage});
     app.post("/api/upload", upload.single('myFile'), uploadImage);
 
     function uploadImage(req, res) {
-        var pageId = null;
+        var pageId = req.body.pageId;
         var widgetId = req.body.widgetId;
+        console.log("for a new widhet" + widgetId);
         var width = req.body.width;
         var userId = req.body.userId;
         var websiteId = req.body.websiteId;
         var myFile = req.file;
         var destination = myFile.destination; // folder where file is saved to
-
+        var newWidget = true ;
         for (var i in widgets) {
             if (widgets[i]._id === widgetId) {
+                newWidget = false ;
                 widgets[i].width = width;
                 widgets[i].url = req.protocol + '://' + req.get('host') + "/uploads/" + myFile.filename;
-                pageId = widgets[i].pageId;
             }
+        }
+        // only execute the code below if the widget is not present and we are creating a new widget
+        // for the given page
+        if(newWidget)
+        {
+            var widgetId = ((new Date()).getTime()).toString();
+            var widget_new = {
+                _id: widgetId,
+                pageId: pageId,
+                width: width,
+                url: req.protocol + '://' + req.get('host') + "/uploads/" + myFile.filename ,
+                text: "random title",
+                widgetType: "IMAGE"
+            }
+            widgets.push(widget_new);
         }
         res.redirect("/assignment/#/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/" + widgetId);
     }
-
 
 }
