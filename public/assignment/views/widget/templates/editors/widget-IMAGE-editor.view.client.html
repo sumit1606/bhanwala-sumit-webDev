@@ -1,4 +1,4 @@
-    <form style="margin-top: 10px"s>
+    <form style="margin-top: 10px" action="/api/upload"  method="post" enctype="multipart/form-data">
         <label for="pagename"> Name </label>
         <input  ng-model="model.widget.name" type ="text" class = "form-control"id="pagename" placeholder="Blog Post">
 
@@ -10,15 +10,16 @@
 
         <label for="width"> Width </label>
         <input ng-model="model.widget.width" type ="text" class = "form-control"id="width" placeholder="enter width size">
-
-        <label for="fileupload"> Upload </label>
-        <input type ="file" class = "form-control"id="fileupload" placeholder="No file choosen">
-
-        <a class="btn btn-info  btn-block"
-           >Upload Image</a>
-
+            <div class="form-group">
+                    <label for="widgetUpload">Upload</label>
+                    <input type="file" id="widgetUpload" name="myFile" class="form-control"/>
+                    <input name="widgetId" value="{{model.widgetId}}" style="display: none"/>
+                    <input name="userId" value="{{model.userId}}" style="display: none"/>
+                    <input name="websiteId" value="{{model.websiteId}}" style="display: none"/>
+                    <button type="submit" class="btn btn-block btn-primary">Upload Image</button>
+            </div>
         <a  ng-show="model.widget._id"
             ng-click = "model.deleteWidget()"
-            class="btn btn-danger btn-block">
-                Delete</a>
+            class="btn btn-danger btn-block">Delete</a>
+
     </form>

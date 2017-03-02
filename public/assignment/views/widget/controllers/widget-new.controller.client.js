@@ -13,25 +13,17 @@
         vm.pageId = $routeParams.pid;
         vm.getEditorTemplateUrl = getEditorTemplateUrl;
         vm.createNewWidget = createNewWidget;
-        vm.currentWidgets = [
-            {
-                "widgetType":"HEADER",
-                "label":"Header"
-            },{
-                "widgetType":"IMAGE",
-                "label":"Image"
-            },{
-                "widgetType":"YOUTUBE",
-                "label":"YouTube"
-            },{
-                "widgetType":"HTML",
-                "label":"Html"
-            }
-        ]
-
         function init() {
             vm.widget = {};
             vm.widget.widgetType = $routeParams['wigtype'];
+            var promise = WidgetService.findAllWidgetTypeToChoose();
+            promise.success
+            (function (currentWidgets) {
+                vm.currentWidgets = currentWidgets ;
+            })
+                .error(function () {
+                    vm.currentWidgets = currentWidgets ;
+                })
 
         }
         init();

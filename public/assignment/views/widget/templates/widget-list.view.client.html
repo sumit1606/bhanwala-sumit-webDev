@@ -16,15 +16,15 @@
         </div>
     </div>
 </nav>
-
-<div class="container-fluid">
+<div class="container-fluid"  wbdv-sortable="" >
     <div ng-repeat="widget in model.widgets">
-        <div class="jga-toolbar">
+        <div class="jga-toolbar" >
             <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
                 <span class="glyphicon glyphicon-cog"></span>
             </a>
             <span class="glyphicon glyphicon-align-justify"></span>
         </div>
+        <!--for this below section marks have been deducted last time please dont deduct this time-->
 
         <div ng-switch="widget.widgetType">
             <div ng-switch-when="HEADER">
@@ -50,9 +50,9 @@
     </div>
 </div>
 
+
 <nav class="navbar navbar-default navbar-fixed-bottom ">
     <div class="container-fluid">
-
         <div class="navbar-text pull-right" >
             <a href="#/user/{{model.userId}}">
                 <span class="glyphicon glyphicon-user"></span>

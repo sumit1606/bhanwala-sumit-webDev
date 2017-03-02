@@ -8,23 +8,33 @@
 
     function WidgetEditController($routeParams, WidgetService, $location) {
         var vm = this;
+        var widget ;
+        function init () {
+            vm.widgetId = $routeParams.wgid;
+            var promise = WidgetService.findWidgetById(vm.widgetId);
+            promise.success(function (widget) {
+                vm.widget = widget ;
+            })
+                .error(function (widget) {
+                console.log("error");
+                })
+
+
+        }
+        init();
         vm.userId = $routeParams.uid;
         vm.websiteId = $routeParams.wid;
         vm.pageId = $routeParams.pid;
-        vm.widgetId = $routeParams.wgid;
         vm.deleteWidget = deleteWidget ;
-
         vm.getEditorTemplateUrl = getEditorTemplateUrl;
         vm.updateWidget = updateWidget;
 
-        function init() {
-            vm.widget = WidgetService.findWidgetById(vm.widgetId);
-        }
-        init();
-
         function getEditorTemplateUrl(type) {
-            return 'views/widget/templates/editors/widget-'+type+'-editor.view.client.html';
+            if(type ) {
+                return 'views/widget/templates/editors/widget-' + type + '-editor.view.client.html';
+            }
         }
+
         function updateWidget() {
             WidgetService.updateWidget(vm.widgetId, vm.widget);
             $location.url("/user/"+vm.userId+"/website/"+ vm.websiteId+ "/page/" + vm.pageId +"/widget");

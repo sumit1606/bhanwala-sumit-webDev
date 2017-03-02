@@ -10,16 +10,18 @@
         var vm = this;
         vm.getYouTubeEmbedUrl = getYouTubeEmbedUrl;
         vm.getTrustedHtml = getTrustedHtml;
-        vm.getWidgetTemplateUrl = getWidgetTemplateUrl;
         vm.userId = $routeParams.uid;
         vm.websiteId = $routeParams.wid;
         vm.pageId = $routeParams.pid;
-        vm.widgets = WidgetService.findAllWidgets(vm.pageId);
-
-        function getWidgetTemplateUrl(widgetType) {
-            var url = 'views/widget/templates/widget-'+widgetType+'.view.client.html';
-            return url;
-        }
+        vm.widgets ;
+        vm.reOrderWidgets = reOrderWidgets;
+        var promise = WidgetService.findAllWidgetsForPage(vm.pageId);
+        promise.success(function (widgets) {
+                vm.widgets = widgets ;
+            })
+        promise.error(function (widgets) {
+                vm.widgets = widgets ;
+            })
 
         function getTrustedHtml(html) {
             return $sce.trustAsHtml(html);
@@ -30,6 +32,16 @@
             var id = urlParts[urlParts.length - 1];
             var url = "https://www.youtube.com/embed/"+id;
             return $sce.trustAsResourceUrl(url);
+        }
+
+        function reOrderWidgets(initial,final){
+             var promise =    WidgetService.reOrderWidgets(initial,final,vm.pageId) ;
+                promise.success(function () {
+
+                })
+                .error(function () {
+
+            })
         }
     }
 })();

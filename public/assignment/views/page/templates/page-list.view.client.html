@@ -22,21 +22,42 @@
             </div>
     </div>
 </nav>
-<!-- tad this below mentioned style c should go in a seperate css file and should be relative-->
-<div class="row container-fluid">
-    <div class="col-xs-12 "
-         style="overflow-y: scroll;top: 0px;bottom: 0px;position: absolute;left: 0px;margin-top: 50px;padding-top: 15px;margin-bottom: 50px;">
-        <ul class="list-group" >
-            <li ng-repeat="page in model.pages" class="list-group-item">
+<!-- Older code with stupid styling issues -->
+<!--<div class="row container-fluid">-->
+    <!--<div class="col-xs-12 "-->
+         <!--style="overflow-y: scroll;top: 0px;bottom: 0px;position: absolute;left: 0px;margin-top: 50px;padding-top: 15px;margin-bottom: 50px;">-->
+        <!--<ul class="list-group" >-->
+            <!--<li ng-repeat="page in model.pages" class="list-group-item">-->
 
+                <!--<div class="row">-->
+                    <!--<div class="col-xs-11 col-sm-6">-->
+                        <!--&lt;!&ndash; below one should redirecting to the widget  &ndash;&gt;-->
+                        <!--<a href="#/user/{{model.userId}}/website/{{model.websiteid}}/page/{{page._id}}/widget">-->
+                            <!--{{page.name}}-->
+                        <!--</a>-->
+                    <!--</div>-->
+                    <!--<div class="col-xs-1 col-sm-6 pull-right">-->
+                        <!--<a href="#/user/{{model.userId}}/website/{{model.websiteid}}/page/{{page._id}}">-->
+                            <!--<span class="glyphicon glyphicon-cog pull-right"></span>-->
+                        <!--</a>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</li>-->
+        <!--</ul>-->
+    <!--</div>-->
+<!--</div>-->
+
+    <div class="container-fluid">
+        <ul class="list-group" >
+            <li ng-repeat="page in model.pages" class="list-group-item" >
                 <div class="row">
-                    <div class="col-xs-11 col-sm-6">
-                        <!-- below one should redirecting to the widget  -->
+                    <div class="col-xs-10 col-sm-10">
+                        <!-- Will redirect the website to its corresponding pages-->
                         <a href="#/user/{{model.userId}}/website/{{model.websiteid}}/page/{{page._id}}/widget">
                             {{page.name}}
                         </a>
                     </div>
-                    <div class="col-xs-1 pull-right">
+                    <div class="col-sm-2 col-xs-2">
                         <a href="#/user/{{model.userId}}/website/{{model.websiteid}}/page/{{page._id}}">
                             <span class="glyphicon glyphicon-cog pull-right"></span>
                         </a>

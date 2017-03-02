@@ -7,28 +7,20 @@
         .module("WebAppMaker")
         .controller("WidgetChooseController", WidgetChooseController);
 
-    function WidgetChooseController($routeParams) {
+    function WidgetChooseController($routeParams ,WidgetService ) {
 
         var vm = this;
         vm.userId = $routeParams['uid'];
         vm.websiteId = $routeParams['wid'];
         vm.pageId = $routeParams['pid'];
-        vm.currentWidgets = [
-            {
-                "widgetType":"HEADER",
-                "label":"Header"
-            },{
-                "widgetType":"IMAGE",
-                "label":"Image"
-            },{
-                "widgetType":"YOUTUBE",
-                "label":"YouTube"
-            },{
-                "widgetType":"HTML",
-                "label":"Html"
-            }
-        ]
-
+        var promise = WidgetService.findAllWidgetTypeToChoose();
+        promise.success
+                (function (currentWidgets) {
+                vm.currentWidgets = currentWidgets ;
+                })
+            .error(function () {
+                vm.currentWidgets = currentWidgets ;
+            })
     }
 
 })();
