@@ -1,7 +1,7 @@
 /**
  * Created by sumitbhanwala on 2/21/17.
  */
-module.exports = function (app ,userModel) {
+module.exports = function (app ,listOfModel) {
 
     // find User is a generic function which will in turn call
     // findUserByCredentails and findUserByUserName
@@ -12,60 +12,45 @@ module.exports = function (app ,userModel) {
     app.put("/api/user/:userId",updateUser);
     app.delete("/api/user/:userId",deleteUser);
 
-
+// maybe implement the concept of q later on here to see the
+ // real usage of the q
     function deleteUser (req ,res) {
         var userId = req.params.userId;
-        for(var user in users)
-        {
-            if(users[user]._id == userId)
-            {
-                users.splice(user , 1);
-                return res.send(200);
-            }
-        }
-        return res.send(404);
+        listOfModel.UserModel
+            .deleteUser(userId)
+            .then(function () {
+                    res.send("OK");
+                },
+                function(err) {
+                    return null;
+                });
     }
-
-    // function createUser(req , res) {
-    //     var body = req.body ;
-    //     var user = body.username;
-    //     var pass = body.password;
-    //     var id= ((new Date()).getTime()).toString();
-    //     users.push({"_id":id ,"username" : user,"password": pass,"firstName": "random","email": "random@random.com",
-    //             "lastName":"lastname"});
-    //     for(var user in users)
-    //     {
-    //         if(users[user]._id == id)
-    //         {
-    //             return res.send((users[user]));
-    //         }
-    //     }
-    // }
 
       function createUser(req,res) {
         var user = req.body;
-          userModel
+          listOfModel.UserModel
               .createUser(user)
               .then(function(user) {
-                  res.json(user);
+                  res.send(user);
               }, function (error) {
                   res.sendStatus(500).send(error);
               });
-
       }
 
     function findUserByCredentials (req ,res) {
         var queryParams = req.query;
         var userName = queryParams.username;
         var passWord = queryParams.password;
-        for(var user in users)
-        {
-            if(users[user].username == userName && users[user].password == passWord)
-            {
-                return res.send((users[user]));
-            }
-        }
-        return res.send(null);
+        console.log("the username is" + userName);
+        console.log("the password is" + passWord);
+        listOfModel.UserModel
+            .findUserByCredentials(userName, passWord)
+            .then(function (user) {
+                res.send(user);
+            } , function (err) {
+            console.log("the particular user not found according to the given username and password");
+            res.send(400);
+        });
     }
 
     function findUser(req ,res) {
@@ -85,40 +70,39 @@ module.exports = function (app ,userModel) {
     function findUserByUserName(req ,res) {
         var queryParams = req.query;
         var userName = queryParams.username;
-        for(var user in users)
-        {
-            if(users[user].username == userName)
-            {
-                return res.send((users[user]));
-            }
-        }
-        return res.send(null);
+        listOfModel.UserModel
+            .findUserByUsername(userName)
+            .then(function (user) {
+                res.send(user);
+            }, function (err) {
+            console.log("the particular user not found according to the given username and password");
+            res.send(400);
+        });
     }
 
     function findUserById (req ,res) {
-        var userName = req.params.userId;
-        for(var user in users)
-        {
-            if(users[user]._id == userName)
-            {
-                return res.send((users[user]));
-            }
-        }
-        return res.send(null);
+        var userId = req.params.userId;
+        listOfModel.UserModel
+            .findUserById(userId)
+            .then(function (user) {
+                console.log(user);
+                res.send(user);
+            }, function (err) {
+            console.log("the particular user not found according to the given username and password");
+            res.send(400);
+        });
     }
 
     function updateUser (req ,res) {
         var userId = req.params.userId;
         var newUser = req.body ;
-        for(var user in users)
-        {
-            if(users[user]._id == userId)
-            {
-                users[user].firstName = newUser.firstName;
-                users[user].lastName = newUser.lastName;
-                return res.send(users[user]);
-            }
-        }
-        return res.send(null);
+        listOfModel.UserModel
+            .updateUser(userId, newUser)
+            .then(function (user) {
+                res.send(user);
+            }, function (err) {
+            console.log(err);
+            res.send(400);
+        });
     }
 }
