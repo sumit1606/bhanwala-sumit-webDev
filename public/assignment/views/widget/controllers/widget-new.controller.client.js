@@ -24,14 +24,12 @@
                 .error(function () {
                     vm.currentWidgets = currentWidgets ;
                 })
-
         }
         init();
-        // redirecting to fetch the URL
+        // redirecting to fetch the templates
         function getEditorTemplateUrl(type) {
             return 'views/widget/templates/editors/widget-'+type+'-editor.view.client.html';
         }
-
         // redirecting to fetch the new widget
         function createNewWidget() {
             WidgetService.createWidget(vm.pageId, vm.widget)

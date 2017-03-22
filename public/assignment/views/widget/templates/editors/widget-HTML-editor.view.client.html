@@ -1,12 +1,24 @@
-<h1>HTML Editor</h1>
 
-<label>Name</label>
-<input ng-model="model.widget.name" class="form-control"/>
-
-<label>Text</label>
-<input ng-model="model.widget.text" class="form-control" placeholder="Please enter html tag you want to embbed"/>
-
-<a ng-show="model.widget._id"
-   ng-click = "model.deleteWidget()"
-   class="btn btn-danger btn-block"s>
-    Delete</a>
+<div class="container-fluid">
+    <form>
+        <div class="form-group marginTop">
+            <label for="widgetName">Name</label>
+            <input type="text" id="widgetName" class="form-control" placeholder="Name"
+                   ng-model="model.widget.name"/>
+        </div>
+        <div class="form-group">
+            <label for="widgetText">HTML Text</label>
+            <div id="widgetText" ng-model="model.widget.text"
+                 text-angular
+                 ta-toolbar="[['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'quote'],
+            ['bold','italics','underline','strikeThrough', 'ul', 'ol', 'redo', 'undo', 'clear'],
+            ['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+            ['indent','outdent'],['html']]"></div>
+        </div>
+        <div class="form-group">
+            <button ng-click="model.deleteWidget()" class="btn btn-block btn-danger">
+                Delete
+            </button>
+        </div>
+    </form>
+</div>

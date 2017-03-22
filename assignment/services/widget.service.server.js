@@ -30,6 +30,10 @@ module.exports = function (app , ListOfModel) {
         },{
             "widgetType":"HTML",
             "label":"Html"
+        },
+        {
+            "widgetType":"TEXT",
+            "label":"Text"
         }
     ]
 

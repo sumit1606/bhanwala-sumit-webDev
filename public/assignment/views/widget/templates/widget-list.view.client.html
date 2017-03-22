@@ -46,6 +46,9 @@
             <div ng-switch-when="YOUTUBE">
                <iframe width="100%" src="{{model.getYouTubeEmbedUrl(widget.url)}}" frameborder="0" allowfullscreen></iframe>
             </div>
+            <div ng-switch-when="TEXT">
+                <ng-include src="'views/widget/templates/widget-TEXT.view.client.html'"></ng-include>
+            </div>
         </div>
     </div>
 </div>
