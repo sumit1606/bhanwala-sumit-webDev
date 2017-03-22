@@ -1,13 +1,8 @@
 /**
  * Created by sumitbhanwala on 2/21/17.
  */
-module.exports = function (app) {
-    var users = [
-        {_id: "123", username: "alice",    password: "alice",    firstName: "Alice", email: "alice@alice.com", lastName: "Wonder"  },
-        {_id: "234", username: "bob",      password: "bob",      firstName: "Bob", email: "bob@bob.com",   lastName: "Marley"  },
-        {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", email: "charly@charly.com", lastName: "Garcia"  },
-        {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose", email: "charly@charly.com",  lastName: "Annunzi" }
-    ];
+module.exports = function (app ,userModel) {
+
     // find User is a generic function which will in turn call
     // findUserByCredentails and findUserByUserName
     // server is listening to the below mentioned end points
@@ -31,21 +26,33 @@ module.exports = function (app) {
         return res.send(404);
     }
 
-    function createUser(req , res) {
-        var body = req.body ;
-        var user = body.username;
-        var pass = body.password;
-        var id= ((new Date()).getTime()).toString();
-        users.push({"_id":id ,"username" : user,"password": pass,"firstName": "random","email": "random@random.com",
-                "lastName":"lastname"});
-        for(var user in users)
-        {
-            if(users[user]._id == id)
-            {
-                return res.send((users[user]));
-            }
-        }
-    }
+    // function createUser(req , res) {
+    //     var body = req.body ;
+    //     var user = body.username;
+    //     var pass = body.password;
+    //     var id= ((new Date()).getTime()).toString();
+    //     users.push({"_id":id ,"username" : user,"password": pass,"firstName": "random","email": "random@random.com",
+    //             "lastName":"lastname"});
+    //     for(var user in users)
+    //     {
+    //         if(users[user]._id == id)
+    //         {
+    //             return res.send((users[user]));
+    //         }
+    //     }
+    // }
+
+      function createUser(req,res) {
+        var user = req.body;
+          userModel
+              .createUser(user)
+              .then(function(user) {
+                  res.json(user);
+              }, function (error) {
+                  res.sendStatus(500).send(error);
+              });
+
+      }
 
     function findUserByCredentials (req ,res) {
         var queryParams = req.query;

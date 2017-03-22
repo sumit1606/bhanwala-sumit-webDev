@@ -1,7 +1,7 @@
 /**
  * Created by sumitbhanwala on 2/21/17.
  */
-module.exports = function (app) {
+module.exports = function (app , userModel) {
 
     var multer = require('multer');
 
