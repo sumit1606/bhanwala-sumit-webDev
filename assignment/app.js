@@ -7,4 +7,6 @@ module.exports = function (app) {
     var modelList = require('./model/models.server.js')();
     require('./services/user.service.server.js')(app,modelList);
     require('./services/website.service.server.js')(app,modelList);
+    require('./services/page.service.server.js')(app,modelList);
+    require('./services/widget.service.server.js')(app,modelList);
 };

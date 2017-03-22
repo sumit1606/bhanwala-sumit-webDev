@@ -15,7 +15,7 @@
             vm.pages = pages;
         })
         promise.error(function (pages) {
-            Console.log("was unable to retrive pages due to some issues");
+            console.log("no pages found");
         })
     }
 })();

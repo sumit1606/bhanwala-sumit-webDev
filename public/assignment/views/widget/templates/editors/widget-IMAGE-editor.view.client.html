@@ -18,6 +18,8 @@
                     <input name="websiteId" value="{{model.websiteId}}" style="display: none"/>
                     <input name="pageId" value="{{model.pageId}}" style="display: none"/>
                     <button type="submit" class="btn btn-block btn-primary">Upload Image</button>
+                    <a class="btn btn-primary btn-block"
+                       href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{model.widgetId}}/flickr">Search Image</a>
             </div>
         <a  ng-show="model.widget._id"
             ng-click = "model.deleteWidget()"

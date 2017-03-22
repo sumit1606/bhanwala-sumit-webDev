@@ -3,20 +3,63 @@
  */
 module.exports = function () {
     var mongoose = require('mongoose');
-    var q = require('q');
 
+    var q = require('q');
     var WebsiteSchema = require('./website.schema.server')();
     var WebsiteModel = mongoose.model('WebsiteModel', WebsiteSchema);
-
     var api = {
         findAllWebsitesForUser : findAllWebsitesForUser,
         findWebsiteById : findWebsiteById,
         createWebsiteForUser : createWebsiteForUser,
         updateWebsite : updateWebsite,
-        deleteWebsite : deleteWebsite
+        deleteWebsite : deleteWebsite,
+        linkPageToWebsite : linkPageToWebsite,
+        unlinkPageToWebsite : unlinkPageToWebsite
     };
 
     return api;
+
+    function linkPageToWebsite(wesbiteId, pageId) {
+        var q1 =  q.defer();
+        WebsiteModel.findOne({_id:wesbiteId}, function(err, Website) {
+            if (err){
+                q1.reject(err);
+            }
+            else {
+                Website.pages.push(pageId);
+                Website.save(function (err, upWebsite) {
+                    if (err) {
+                        q1.reject();
+                    }
+                    else {
+                        q1.resolve(pageId);
+                    }
+                });
+            }
+        });
+        return q1.promise;
+    }
+
+    function unlinkPageToWebsite(wesbiteId, pageId) {
+        var q1 =  q.defer();
+        WebsiteModel.findOne({_id:websiteId}, function(err, currWebsite) {
+            if (err){
+                q1.reject();
+            }
+            else {
+                currWebsite.pages.pull(pageId);
+                currWebsite.save(function (err, updatedWebsite) {
+                    if (err) {
+                        q1.reject();
+                    }
+                    else {
+                        q1.resolve();
+                    }
+                });
+            }
+        });
+        return q1.promise;
+    }
 
     function findWebsiteById (websiteId) {
         var q1 = q.defer();
@@ -79,19 +122,17 @@ module.exports = function () {
     }
 
     function deleteWebsite (websiteId) {
-        var deferred =  q.defer();
-        WebsiteModel.findOneAndRemove({_id:websiteId}, function(err, foundWebsite) {
+        var q1 =  q.defer();
+        WebsiteModel.findOneAndRemove({_id:websiteId}, function(err, Website) {
             if (err){
-                deferred.reject(err);
+                q1.reject(err);
             }
             else {
-                console.log(foundWebsite._id);
-                console.log(foundWebsite.pages);
-                deferred.resolve();
+                q1.resolve();
             }
         });
 
-        return deferred.promise;
+        return q1.promise;
 
     }
 

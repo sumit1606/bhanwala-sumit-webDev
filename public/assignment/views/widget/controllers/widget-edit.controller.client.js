@@ -1,5 +1,4 @@
 /**
-<<<<<<< Updated upstream
  * Created by sumitbhanwala on 2/15/17.*/
 (function(){
     angular

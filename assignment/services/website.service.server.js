@@ -44,9 +44,7 @@ module.exports = function (app ,ListOfModel) {
     }
 
     function findAllWebsitesForUser (req ,res) {
-        console.log(req.params);
         var userId = req.params.userId;
-        console.log(userId);
         WebsiteModel.findAllWebsitesForUser(userId)
             .then(function (websites) {
                 res.send(websites);

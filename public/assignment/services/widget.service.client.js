@@ -22,7 +22,6 @@
         return api;
 
         function findAllWidgetTypeToChoose() {
-            console.log("it will be printed on client side");
             return $http.get('/api/widget/alltype');
         }
         
