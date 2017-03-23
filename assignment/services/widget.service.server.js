@@ -158,9 +158,9 @@ module.exports = function (app , ListOfModel) {
             }
             var width = req.body.width;
             var userId = req.body.userId;
+            var destination = myFile.destination;
             var websiteId = req.body.websiteId;
             var myFile = req.file;
-            var destination = myFile.destination;
             WidgetModel
                 .findWidgetById(widgetId)
                 .then(
