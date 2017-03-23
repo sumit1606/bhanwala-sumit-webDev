@@ -15,12 +15,13 @@ module.exports = function () {
         updateWidget : updateWidget,
         deleteWidget : deleteWidget,
         reorderWidget : reorderWidget,
-        deleteBulkWidgets : deleteBulkWidgets
+        deleteAllWidgets : deleteAllWidgets
     };
 
     return api;
 
-    function deleteBulkWidgets (widgets) {
+    function deleteAllWidgets (widgets) {
+        console.log(widgets);
         var q1 = q.defer();
         WidgetModel.remove({'_id': {'$in': widgets}}, function (err, result) {
             if (err) {
@@ -68,8 +69,6 @@ module.exports = function () {
             .sort('orderIndex')
             .exec( function (err, widgets) {
                 if (err) {
-                    console.log("inside error")
-                    console.log(pageId);
                     q1.reject(err);
                 } else {
                     q1.resolve(widgets);
@@ -108,8 +107,6 @@ module.exports = function () {
                 Widget.rows = widget.rows || Widget.rows;
                 Widget.size = widget.size || Widget.size;
                 Widget.class = widget.wClass || Widget.class;
-                Widget.icon = widget.icon  || Widget.icon;
-                Widget.deletable = widget.deletable || Widget.deletable;
                 Widget.formatted = widget.formatted;
                 Widget.save(function (err, updatedPage) {
                     if (err) {
@@ -125,10 +122,10 @@ module.exports = function () {
     }
 
     function deleteWidget (widgetId) {
-        var deferred = q.defer();
+        var q1 = q.defer();
         WidgetModel.findOne({_id: widgetId},function (err, widget) {
             if (err){
-                deferred.reject();
+                q1.reject();
             }
             else{
                 var currentWidget= widget.orderIndex;
@@ -136,17 +133,17 @@ module.exports = function () {
                 WidgetModel.remove({_id: widgetId},
                     function (err, resp) {
                         if (err){
-                            deferred.reject();
+                            q1.reject();
                         }
                         else {
                             WidgetModel.find({_page: currentPageId,
                                     orderIndex: {$gte: currentWidget}},
                                 function (err, widgets) {
                                     if(err){
-                                        deferred.reject();
+                                        q1.reject();
                                     }
                                     else if (widgets.length == 0) {
-                                        deferred.resolve();
+                                        q1.resolve();
                                     }
                                     else
                                     {
@@ -156,10 +153,10 @@ module.exports = function () {
                                                 {$set: {orderIndex: updatedOrder}},
                                                 function (err, resp) {
                                                     if (err){
-                                                        deferred.reject();
+                                                        q1.reject();
                                                     }
                                                     else{
-                                                        deferred.resolve();
+                                                        q1.resolve();
                                                     }
                                                 });
                                         })
@@ -169,15 +166,15 @@ module.exports = function () {
                     });
             }
         });
-        return deferred.promise;
+        return q1.promise;
     }
 
 
     function reorderWidget (pageId, start, end) {
-        var deferred = q.defer();
+        var q1 = q.defer();
         WidgetModel.findOne({_page: pageId, orderIndex: start}, function (err, widget){
             if (err){
-                deferred.reject();
+                q1.reject();
             }
             else{
                 if(start < end){
@@ -185,33 +182,29 @@ module.exports = function () {
                             $and: [{orderIndex: {$gt: start}}, {orderIndex: {$lte: end}}]},
                         function (err, widgets) {
                             if(err){
-                                deferred.reject();
+                                q1.reject();
                             }
                             else{
                                 widgets.forEach(function (w) {
-
                                     var updatedOrder=w.orderIndex -1;
-
                                     WidgetModel.update({_id: w._id},{$set: {orderIndex: updatedOrder}},
                                         function (err, resp) {
                                             if (err){
-                                                deferred.reject();
+                                                q1.reject();
                                             }
                                             else{
-
-                                                deferred.resolve();
+                                                q1.resolve();
                                             }
                                         });
                                 })
-
                                 WidgetModel.update({_page: pageId, _id: widget._id},
                                     {$set: {orderIndex: end}},
                                     function (err) {
                                         if (err){
-                                            deferred.reject();
+                                            q1.reject();
                                         }
                                         else{
-                                            deferred.resolve();
+                                            q1.resolve();
                                         }
                                     });
                             }
@@ -222,7 +215,7 @@ module.exports = function () {
                             $and: [{orderIndex: {$gte: end}}, {orderIndex: {$lt: start}}]},
                         function (err, widgets) {
                             if(err){
-                                deferred.reject();
+                                q1.reject();
                             }
                             else{
                                 widgets.forEach(function (w) {
@@ -231,10 +224,10 @@ module.exports = function () {
                                         {$set: {orderIndex: updatedOrder}},
                                         function (err, resp) {
                                             if (err){
-                                                deferred.reject();
+                                                q1.reject();
                                             }
                                             else{
-                                                deferred.resolve();
+                                                q1.resolve();
                                             }
                                         });
                                 });
@@ -242,10 +235,10 @@ module.exports = function () {
                                     {$set: {orderIndex: end}},
                                     function (err) {
                                         if (err){
-                                            deferred.reject();
+                                            q1.reject();
                                         }
                                         else{
-                                            deferred.resolve();
+                                            q1.resolve();
                                         }
                                     });
                             }
@@ -253,7 +246,7 @@ module.exports = function () {
                 }
             }
         })
-        return deferred.promise;
+        return q1.promise;
     }
 
 };

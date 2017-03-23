@@ -16,15 +16,52 @@ module.exports = function () {
         updatePage : updatePage,
         deletePage : deletePage,
         linkWidgetToPage : linkWidgetToPage,
-        unLinkWidgetFromPage: unLinkWidgetFromPage,
-        deleteBulkPages : deleteBulkPages
+        deleteAllPages : deleteAllPages,
+        deleteWidgetFromPage : deleteWidgetFromPage,
+        unLinkWidgetFromPage : unLinkWidgetFromPage
     };
 
     return api;
 
-    function deleteBulkPages (pages) {
-
+    function deleteAllPages (pages) {
+        var q1 = q.defer();
+        PageModel.find({'_id': {'$in': pages}}, function (err, foundPages) {
+            if (err) {
+                q1.reject();
+            }
+            else if (foundPages && foundPages.length > 0) {
+                var widgets =[];
+                foundPages.forEach(
+                    function (page) {
+                        widgets = widgets.concat(page.widgets);
+                        page.remove();
+                    }
+                );
+                q1.resolve(widgets);
+            }
+            else {
+                q1.resolve([]);
+            }
+        });
+        return q1.promise;
     }
+
+
+    function deleteWidgetFromPage(pageId, widgetId) {
+        var q1 = q.defer();
+        PageModel.update({_id: pageId},
+            {$pull: {widgets: widgetId}},
+            function (err, result) {
+                if (err){
+                    q1.reject();
+                }
+                else {
+                    q1.resolve(result);
+                }
+            });
+        return q1.promise;
+    }
+
 
     function unLinkWidgetFromPage(pageId, widgetId) {
         var q1=q.defer();
@@ -124,12 +161,12 @@ module.exports = function () {
 
     function deletePage (pageId) {
         var q1 =  q.defer();
-        PageModel.remove({_id:pageId}, function(err, Page) {
+        PageModel.findOneAndRemove({_id:pageId}, function(err, Page) {
             if (err){
                 q1.reject(err);
             }
             else {
-                q1.resolve();
+                q1.resolve(Page);
             }
         });
         return q1.promise;

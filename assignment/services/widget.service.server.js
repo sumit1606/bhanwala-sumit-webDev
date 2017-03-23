@@ -53,6 +53,24 @@ module.exports = function (app , ListOfModel) {
     }
 
     function deleteWidget(req , res) {
+        var widgetId= req.params.widgetId;
+        WidgetModel.findWidgetById(widgetId)
+            .then(function (widget) {
+                var pageId=widget._page;
+                WidgetModel.deleteWidget(widgetId)
+                    .then(function () {
+                        PageModel.deleteWidgetFromPage(pageId, widgetId)
+                            .then(function () {
+                                res.send(200);
+                            }, function () {
+                                res.send(500);
+                            })
+                    }, function () {
+                        res.status(500);
+                    });
+            }, function () {
+                res.send(500).send("No such widget exist");
+            });
 
     }
 
@@ -76,13 +94,18 @@ module.exports = function (app , ListOfModel) {
 
     function createWidget (req , res) {
         var pageId = req.params.pageId;
-        var Widget =  req.body;
-        WidgetModel.createWidget(pageId, Widget)
-            .then(function (Widget) {
-                    res.send(Widget);
+        var widget = req.body;
+        var response ={};
+
+        WidgetModel.createWidget(pageId,widget)
+            .then(function (WidgetId) {
+                return PageModel.linkWidgetToPage(pageId, WidgetId);
+            })
+            .then(function (widgetId) {
+                    res.json(widgetId);
                 },
-                function (err) {
-                    res.sendStatus(400);
+                function(err) {
+                    res.json(err);
                 });
     }
 
@@ -129,6 +152,10 @@ module.exports = function (app , ListOfModel) {
         if (req.file) {
             var pageId = null;
             var widgetId = req.body.widgetId;
+            if(widgetId == null)
+            {
+
+            }
             var width = req.body.width;
             var userId = req.body.userId;
             var websiteId = req.body.websiteId;
@@ -153,22 +180,7 @@ module.exports = function (app , ListOfModel) {
                             );
                     },
                     function (error) {
-                        WidgetModel.createWidget(pageId, Widget)
-                            .then(function (Widget) {
-                                    WidgetModel
-                                        .updateWidget(Widget._id, widget)
-                                        .then(
-                                            function (updatedWidget) {
-                                                res.redirect("/assignment/#/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/" + widgetId);
-                                            },
-                                            function (err) {
-                                                res.sendStatus(400);
-                                            }
-                                        );
-                                },
-                                function (err) {
-                                    res.sendStatus(400);
-                                })
+                        console.log(error);
                     }
                 );
         }

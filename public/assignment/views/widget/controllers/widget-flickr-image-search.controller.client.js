@@ -45,7 +45,7 @@
                 .then(function (response) {
                     $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + vm.currentWidgetId);
                 }, function (err) {
-                    vm.error = "Widget updation failed";
+                    vm.error = "error";
                 });
         }
     }

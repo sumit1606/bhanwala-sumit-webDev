@@ -12,14 +12,32 @@ module.exports = function (app ,listOfModel) {
     app.put("/api/user/:userId",updateUser);
     app.delete("/api/user/:userId",deleteUser);
 
-// maybe implement the concept of q later on here to see the
- // real usage of the q
+    var userModel = listOfModel.UserModel;
+    var websiteModel = listOfModel.WebsiteModel;
+    var pageModel = listOfModel.PageModel;
+    var widgetModel = listOfModel.WidgetModel;
+
     function deleteUser (req ,res) {
         var userId = req.params.userId;
-        listOfModel.UserModel
-            .deleteUser(userId)
-            .then(function () {
+        userModel.deleteUser(userId)
+            .then(function (user) {
+                console.log("user here is" + user);
+                    var websites = user.websites;
+                    console.log("website for user");
+                    console.log(websites);
+                    websiteModel.deleteAllWebsites(websites)
+                        .then(function (pages) {
+                            return pageModel.deleteAllPages(pages);
+                        }).then(function (widgets) {
+                        return widgetModel.deleteAllWidgets(widgets);
+                    }).then(function () {
+                            console.log("Deleted");
+                        },
+                        function(err) {
+                            console.log("Not Deleted" + err);
+                        });
                     res.send("OK");
+                    return;
                 },
                 function(err) {
                     return null;

@@ -14,10 +14,35 @@ module.exports = function () {
         updateWebsite : updateWebsite,
         deleteWebsite : deleteWebsite,
         linkPageToWebsite : linkPageToWebsite,
-        unlinkPageToWebsite : unlinkPageToWebsite
+        unlinkPageToWebsite : unlinkPageToWebsite,
+        deleteAllWebsites : deleteAllWebsites
     };
 
     return api;
+
+    function deleteAllWebsites (websites) {
+        var q1 =  q.defer();
+        WebsiteModel.find({'_id': {'$in': websites}}, function (err, foundWebsites) {
+            if (err) {
+                q1.reject();
+            }
+            else if (foundWebsites && foundWebsites.length > 0)  {
+                var pages = [];
+                foundWebsites.forEach(
+                    function (website) {
+                        pages = pages.concat(website.pages);
+                        website.remove();
+                    }
+                );
+                q1.resolve(pages);
+            }
+            else {
+                q1.resolve([]);
+            }
+
+        });
+        return q1.promise;
+    }
 
     function linkPageToWebsite(wesbiteId, pageId) {
         var q1 =  q.defer();
@@ -128,7 +153,7 @@ module.exports = function () {
                 q1.reject(err);
             }
             else {
-                q1.resolve();
+                q1.resolve(Website);
             }
         });
 

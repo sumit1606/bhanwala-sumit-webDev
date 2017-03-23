@@ -10,7 +10,8 @@ module.exports = function () {
          findUserByCredentials : findUserByCredentials,
          updateUser : updateUser,
          deleteUser : deleteUser ,
-         LinkWebsiteToUser : LinkWebsiteToUser
+         LinkWebsiteToUser : LinkWebsiteToUser ,
+         UnLinkWebsiteFromUser : UnLinkWebsiteFromUser
      };
 
     var mongoose = require('mongoose');
@@ -52,6 +53,28 @@ module.exports = function () {
             }
             else {
                 q1.reject();
+            }
+        });
+        return q1.promise;
+    }
+
+    function UnLinkWebsiteFromUser (userId, websiteId) {
+        var q1 =  q.defer();
+        UserModel.findOne({_id:userId}, function(err, User) {
+            if (err){
+                q1.reject();
+
+            }
+            else {
+                User.websites.pull(websiteId);
+                User.save(function (err, updatedUser) {
+                    if (err) {
+                        q1.reject();
+                    }
+                    else {
+                        q1.resolve();
+                    }
+                });
             }
         });
         return q1.promise;
@@ -122,11 +145,11 @@ module.exports = function () {
       
       function deleteUser(userId) {
           var q1 =  q.defer() ;
-          UserModel.remove({_id : userId} , function (err , user) {
+          UserModel.findOneAndRemove({_id : userId} , function (err , user) {
               if(err)
                   q1.reject();
               else
-                  q1.resolve();
+                  q1.resolve(user);
           });
           return q1.promise ;
       }

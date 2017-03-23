@@ -18,7 +18,6 @@ module.exports = function (app, listOfModel) {
 
     function findAllPagesForWebsite(req, res) {
         var websiteId = req.params.websiteId;
-        console.log(websiteId);
         PageModel.findAllPagesForWebsite(websiteId)
             .then(function (pages) {
                 res.send(pages);
@@ -43,8 +42,24 @@ module.exports = function (app, listOfModel) {
 
     function deletePage(req ,res) {
         var pageId = req.params.pageId;
-
-        res.sendStatus(404);
+        PageModel.deletePage(pageId)
+            .then(function (currPage) {
+                    var pageWebsite = currPage._website;
+                    var widgets = currPage.widgets;
+                    console.log(widgets);
+                    WidgetModel.deleteAllWidgets(widgets)
+                        .then(function () {
+                            return WebsiteModel.unlinkPageToWebsite(pageWebsite, currPage._id);
+                        }).then(function () {
+                        },
+                        function(err) {
+                            res.send(err);
+                        });
+                    res.send(200);
+                },
+                function(err) {
+                    res.send(404 + "gee");
+                });
     }
 
     function updatePage(req , res) {
@@ -73,7 +88,6 @@ module.exports = function (app, listOfModel) {
                 function(err) {
                     res.send(err);
                 });
-
     }
 
 }

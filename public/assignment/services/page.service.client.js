@@ -34,6 +34,7 @@
         }
 
         function deletePage(pageId) {
+            console.log("inside page servicer client side") ;
             return $http.delete('/api/page/'+pageId);
         }
     }

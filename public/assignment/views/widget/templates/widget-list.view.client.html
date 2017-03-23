@@ -43,8 +43,14 @@
             <div ng-switch-when="HTML">
                 <div ng-bind-html="model.getTrustedHtml(widget.text)"></div>
             </div>
-            <div ng-switch-when="YOUTUBE">
-               <iframe width="100%" src="{{model.getYouTubeEmbedUrl(widget.url)}}" frameborder="0" allowfullscreen></iframe>
+            <div ng-switch-when="YOUTUBE" class="youtube-widget" >
+                <ng-include src="'views/widget/templates/widget-YOUTUBE-view.client.html'"></ng-include>
+                <div class="jga-toolbar">
+                    <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
+                        <span class="glyphicon glyphicon-cog "></span>
+                    </a>
+                    <span class="glyphicon glyphicon-align-justify"></span>
+                </div>
             </div>
             <div ng-switch-when="TEXT">
                 <ng-include src="'views/widget/templates/widget-TEXT.view.client.html'"></ng-include>

@@ -15,7 +15,6 @@ module.exports = function (app ,ListOfModel) {
     var PageModel = ListOfModel.PageModel;
     var WidgetModel = ListOfModel.WidgetModel;
 
-
     function createWebsite (req ,res) {
          var website = req.body ;
          var userId = req.params.userId ;
@@ -67,7 +66,26 @@ module.exports = function (app ,ListOfModel) {
     }
 
     function deleteWebsite(req ,res) {
+        var websiteId = req.params.websiteId;
+        WebsiteModel.deleteWebsite(websiteId)
+            .then(function (currWebsite) {
+                    var pages = currWebsite.pages;
+                    var user = currWebsite._user;
+                    PageModel.deleteAllPages(pages)
+                        .then(function (widgets) {
+                            return WidgetModel.deleteAllWidgets(widgets);
+                        }).then(function () {
+                        return UserModel.UnLinkWebsiteFromUser(user, currWebsite._id);
+                    }).then(function () {
+                            res.send(200);
+                        },
+                        function(err) {
+                            res.send(200);
+                        });
+                    res.send(200);
+                },
+                function(err) {
+                    res.status(400);
+                });
     }
-
-
 }
