@@ -23,7 +23,7 @@
          function createUser(user) {
              console.log("user is" + user);
              return $http.post("/api/user", user);
-         }
+         }z
 
          function deleteUser(userId) {
              return $http.delete("/api/user/"+userId);
