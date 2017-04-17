@@ -1,30 +1,454 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Web Dev Course Home Page</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="robots" content="index, follow" />
+    <title>Sumit Bhanwala - My Personal Website</title>
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <meta name="theme-color" content="#363551">
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Roboto:500,400italic,100,300,700,100italic,300italic,400" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/mywall.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-    <h1>Web Dev Course Home Page</h1>
+<header>
+    <div id="top" class="container">
+        <nav id="ha-header" class="left-nav ha-header">
+            <ul class="nav">
+                <li class="dropdown">
+                    <a class="dropdown-toggle circle-main" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                        <svg class="hello" height="36" viewBox="0 0 24 24" width="36" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2 15.5v2h20v-2H2zm0-5v2h20v-2H2zm0-5v2h20v-2H2z" />
+                            <path d="M0 0h24v24H0z" fill="none" />
+                        </svg>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a data-scroll data-options='{ "easing": "easeOutQuint" }' href="#top" class="menu-item wall">Home</a></li>
+                        <li><a data-scroll data-options='{ "easing": "easeOutQuint" }' href="#skills" class="menu-item wall">Technnical Skills</a></li>
+                        <li><a data-scroll data-options='{ "easing": "easeOutQuint" }' href="#education" class="menu-item wall">Education</a></li>
+                        <li><a data-scroll data-options='{ "easing": "easeOutQuint" }' href="#portfolio" class="menu-item wall">Projects</a></li>
+                        <li><a data-scroll data-options='{ "easing": "easeOutQuint" }' href="#download" class="menu-item wall">Resume</a></li>
+                        <li><a data-scroll data-options='{ "easing": "easeOutQuint" }' href="#contacto" class="menu-item wall">Contact Me</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="container">
+        <img class="img-circle imgsus" alt="Sumit Bhanwala" src="img/profile.jpg" width="200px" height="200px">
+        <h1 class="name-boss">Sumit Bhanwala</h1>
+        <h2 class="main-details">Web application Enthusiast</h2>
+        <div class="social-icons">
+            <a target="_blank" href="https://www.facebook.com/sumit1606" class="btn btn-round btn-clear btn-facebook"><i class="fa fa-facebook"></i></a>
+            <a target="_blank" href="https://github.com/sumit1606" class="btn btn-round btn-clear btn-github"><i class="fa fa-github"></i></a>
+            <a target="_blank" href="https://www.linkedin.com/in/sumit-bhanwala/" class="btn btn-round btn-clear btn-linkedin">
+                <i class="fa fa-linkedin"></i></a>
+        </div>
+    </div>
+</header>
+<section id="about" class="cd-intro">
+    <h1 class="cd-headline letters type">
+        <span>Hi. I'm </span>
+        <span class="cd-words-wrapper waiting">
+                                     <b class="is-visible">Sumit Bhanwala</b>
+                                     <b>majoring in Machine learning and Data science</b>
+                                     <b>also a web designer.</b>
+                                     <b>an ambitious and dedicated individual.</b>
+                               </span>
+    </h1>
+</section>
+<section class="full-section my-about">
+    <article class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="title-main">About Me.</h2>
+                <p class="text-main">Currently a grad student at Northeastern University, Boston.
+                    <br>
+                    <br>Master of Science in Computer Science.
+                    <br>
+                    <br>Majoring in Artificial Intelligence</p>
+            </div>
+        </div>
+    </article>
+    <section id="aboutme" class="full-section ha-waypoint" data-animate-down="ha-header-subshow" data-animate-up="ha-header-show">
+        <div class="owl-carousel">
+            <div class="item"><img alt="pexels-1" src="img/pexels/pexels-1.jpg" /></div>
+            <div class="item"><img alt="pexels-2" src="img/pexels/pexels-2.jpg" /></div>
+            <div class="item"><img alt="pexels-3" src="img/pexels/pexels-3.jpg" /></div>
+            <div class="item"><img alt="pexels-4" src="img/pexels/pexels-4.jpg" /></div>
+            <div class="item"><img alt="pexels-5" src="img/pexels/pexels-5.jpg" /></div>
+            <div class="item"><img alt="pexels-6" src="img/pexels/pexels-6.jpg" /></div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="title-three">More about me, and my life.</h3>
+                    <p class="text-three">Machine Learning enthusiast and casual web developer.
+                        <br> Fifa and Counter Strike to chill.
+                        <br> Definitely Marvel over DC.</p>
+                </div>
+                <div class="col-md-4">
+                    <img class="img-rd" alt="programmer" src="img/programmer.png" />
+                    <h3 class="title-rd">Programmer</h3>
+                    <p class="text-rd">Any fool can write code that a computer can understand. Good programmers write code that humans can understand.</p>
+                </div>
+                <div class="col-md-4">
+                    <img class="img-rd" alt="creative" src="img/brain.png" />
+                    <h3 class="title-rd">Developer</h3>
+                    <p class="text-rd">Walking on water and developing software from a specification are easy if both are frozen.</p>
+                </div>
+                <div class="col-md-4">
+                    <img class="img-rd" alt="innovator" src="img/rocket.png" />
+                    <h3 class="title-rd">Innovator</h3>
+                    <p class="text-rd">Technology at the Speed of Life!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="skills" class="full-section-two bg-skills">
+        <div class="container">
+            <h2 class="title-main mywhite">Skills &#38; Abilities.</h2>
+            <div class="row">
+                <div class="col-md-6 separ">
+                    <div class="row">
+                        <div class="hidden-xs col-sm-2 icon-skill"><img class="img-skill" alt="Wordpress" src="img/python.ico"></div>
+                        <div class="col-sm-10 ">
+                            <div class="row">
+                                <div class="col-sm-12 title-skill">Python</div>
+                                <div class="col-sm-12 bar-skill">
+                                    <div class="this-skill my-blue my-ninety"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 separ">
+                    <div class="row">
+                        <div class="hidden-xs col-sm-2 icon-skill"><img class="img-skill" style="height: 31px;width: 31px" alt="responsive" src="img/java.jpg"></div>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-sm-12 title-skill">Java</div>
+                                <div class="col-sm-12 bar-skill">
+                                    <div class="this-skill my-pink my-seventy"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 separ">
+                    <div class="row">
+                        <div class="hidden-xs col-sm-2 icon-skill"><img class="img-skill" style="height: 40px;width: 40px" alt="responsive" src="img/c.png"></div>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-sm-12 title-skill">C/C++</div>
+                                <div class="col-sm-12 bar-skill">
+                                    <div class="this-skill my-pink my-seventy"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 separ">
+                    <div class="row">
+                        <div class="hidden-xs col-sm-2 icon-skill"><img class="img-skill" style="height: 31px;width: 31px" alt="Wordpress" src="img/mysql.gif"></div>
+                        <div class="col-sm-10 ">
+                            <div class="row">
+                                <div class="col-sm-12 title-skill">MySql</div>
+                                <div class="col-sm-12 bar-skill">
+                                    <div class="this-skill my-blue my-ninety"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 separ">
+                    <div class="row">
+                        <div class="col-sm-2 hidden-xs icon-skill"><img class="img-skill" alt="PHP" src="img/php.png"></div>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-sm-12 title-skill">PHP</div>
+                                <div class="col-sm-12 bar-skill">
+                                    <div class="this-skill my-blue my-seventy"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 separ">
+                    <div class="row">
+                        <div class="hidden-xs col-sm-2 icon-skill"><img class="img-skill" alt="html 5" src="img/html5.png"></div>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-sm-12 title-skill">HTML5</div>
+                                <div class="col-sm-12 bar-skill">
+                                    <div class="this-skill my-pink my-eighty"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 separ">
+                    <div class="row">
+                        <div class="hidden-xs col-sm-2 icon-skill"><img class="img-skill" alt="css 3" src="img/css3.png"></div>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-sm-12 title-skill">CSS3</div>
+                                <div class="col-sm-12 bar-skill">
+                                    <div class="this-skill my-pink my-eighty"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 separ">
+                    <div class="row">
+                        <div class="hidden-xs col-sm-2 icon-skill"><img class="img-skill" alt="JavaScript" src="img/js.png"></div>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-sm-12 title-skill">MEAN STACK</div>
+                                <div class="col-sm-12 bar-skill">
+                                    <div class="this-skill my-blue my-seventy"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container cont-mg">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="cont-ab">
+                        <h4 class="title-four color-a">Other Skills</h4>
+                        <div class="row">
+                            <div class="col-xs-2"><img class="img-soft" style="height: 40px;width: 40px" alt="Photoshop" src="img/flask.png"></div>
+                            <div class="col-xs-5 ability">MongoDb</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-2"><img class="img-soft" style="height: 35px;width: 35px" alt="Illustrator" src="img/postgres.png"></div>
+                            <div class="col-xs-5 ability">Linux</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-2"><img class="img-soft" style="height: 31px;width: 31px" alt="InDesign" src="img/git.png"></div>
+                            <div class="col-xs-5 ability">Git</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-2"><img class="img-soft" alt="InDesign" src="img/offi.png"></div>
+                            <div class="col-xs-5 ability">Office</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 pull-right">
+                    <div class="cont-ab">
+                        <h4 class="title-four color-c">Other Interests</h4>
+                        <div class="row">
+                            <!-- Interest 1 -->
+                            <div class="col-sm-6">
+                                <div class="row">
+                                    <div class="col-md-12 intrst">
+                                        <img alt="Running" src="img/Running-icon.png">
+                                    </div>
+                                </div>
+                                <p class="text-interest">Running</p>
+                            </div>
+                            <!-- Interest 3 -->
+                            <div class="col-sm-6">
+                                <div class="row">
+                                    <div class="col-md-12 intrst">
+                                        <img alt="Swimming" src="img/gaming.jpg" width="80px" height="80px">
+                                    </div>
+                                </div>
+                                <p class="text-interest">Gaming</p>
+                            </div>
+                            <!-- Interest 4 -->
+                            <div class="col-sm-6">
+                                <div class="row">
+                                    <div class="col-md-12 intrst">
+                                        <img alt="Tenis" src="img/movie.png" width="64px" height="64px">
+                                    </div>
+                                </div>
+                                <p class="text-interest">Movies</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="education" class="full-section">
+        <div class="container">
+            <h2 class="title-main">Education.</h2>
+        </div>
+        <article id="cd-timeline" class="cd-container">
+            <div class="cd-timeline-block">
+                <div class="cd-timeline-img my-aqua">
+                    <img src="img/g1.png" alt="Engineering">
+                </div>
+                <div class="cd-timeline-content">
+                    <h2>M.S., Computer Science</h2>
+                    <h3>Northeastern University</h3>
+                    <span class="cd-date">September 2016 - </span>
+                </div>
+            </div>
+            <div class="cd-timeline-block">
+                <div class="cd-timeline-img my-green">
+                    <img src="img/pec.png" alt="Engineering">
+                </div>
+                <div class="cd-timeline-content">
+                    <h2>B.Tech., Computer Science And Engineering</h2>
+                    <h3>PEC University of Technology</h3>
+                    <span class="cd-date">August 2010 - May 2014</span>
+                </div>
+            </div>
+            <div class="cd-timeline-block">
+                <div class="cd-timeline-img my-pink">
+                    <img src="img/edu1.png" alt="Science" height="64px" width="64px">
+                </div>
+                <div class="cd-timeline-content">
+                    <h2>High School</h2>
+                    <h3>SD Senior Secondary School ,Chandigarh</h3>
+                    <span class="cd-date">2008- 2010</span>
+                </div>
+            </div>
+            <div class="cd-timeline-block">
+                <div class="cd-timeline-img my-grey">
+                    <img src="img/ed4.png" alt="Times">
+                </div>
+            </div>
+        </article>
+        <p class="txt-times">The Beginning of Times</p>
+    </section>
+    <section id="work" class="full-section-two bg-work">
+        <div class="container">
+            <h2 class="title-main mywhite">Work Experience</h2>
+        </div>
+        <div class="container cont-mg">
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#1" role="tab" data-toggle="tab">Cvent India Pvt. Limited</a></li>
+                <li role="presentation"><a href="#2" role="tab" data-toggle="tab">Karlsruhe Insitute of Technology</a></li>
+            </ul>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade active in" id="1">
+                    <h3 class="title-wk">Software Quality Enginner</h3>
+                    <p class="wk-company">Software Engineer</p>
+                    <p class="text-wk">
+                        <br> </p>
+                    <p class="wk-date">June 2014 – Aug 2016</p>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="2">
+                    <h3 class="title-wk"></h3>
+                    <p class="wk-company">Intern</p>
+                    <p class="text-wk">
+                        <br> Used application at NIC to gather details about their databases.</p>
+                    <p class="wk-date">March 2013 – June 2013</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="portfolio" class="full-section">
+        <div class="container">
+            <h2 class="title-main">Projects</h2>
+            <p class="text-main">Some of the stuff that I have worked on.</p>
+            <br>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="[ col-xs-12 col-sm-offset-2 col-sm-8 ]">
+                    <ul class="event-list">
+                        <li>
+                            <time datetime="2014-07-20">
+                                <span class="day">2016</span>
+                                <span class="month">Dec</span>
+                            </time>
+                            <div class="info">
+                                <h2 class="title">Web Search Engine</h2>
+                                <p class="desc">Implemented Retrieval models BM25, TF-IDF and Vector Space Cosine Similarity on CACM dataset. Worked on pseudo relevance feedback using Rocchio’s Algorithm. Snippet Generation also implemented.</p>
+                            </div>
+                            <div class="social" style="padding-top: 45px">
+                                <ul>
+                                    <li class="github" style="width:33%;"><a target="_blank" href=""><span class="fa fa-github"></span></a></li>
+                                </ul>
+                            </div>
 
-    <p>
-        Customize this home page to your linking.
-    </p>
-
-    <h2>Required links</h2>
-    <ul>
-        <li>
-            <a href="https://mymusicapp-webdev.herokuapp.com/#/">Project</a>
-        </li>
-        <li>
-            <a href="assignment/index.html#/login">Assignment</a>
-        </li>
-        <li>
-            <a href="test/index.html">Test MongoDB</a>
-        </li>
-        <li>
-            <a href="https://github.com/sumit1606/bhanwala-sumit-webDev">Your public repository at GitHub.com</a>
-        </li>
-    </ul>
+                        </li>
+                        <li>
+                            <time datetime="2014-07-20 0000">
+                                <span class="day">2017</span>
+                                <span class="month">January-April</span>
+                            </time>
+                            <div class="info">
+                                <a class="title" href="assignment/index.html">WebAppMaker</a>A web application which allows you to create a blogging application </p>
+                            </div>
+                            <div class="social" style="padding-top: 45px">
+                                <ul>
+                                    <li class="github" style="width:33%;"><a target="_blank" href="https://github.com/rohitrusty314/IR-Project"><span class="fa fa-github"></span></a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <time datetime="2014-07-20 0000">
+                                <span class="day">2017</span>
+                                <span class="month">January-April</span>
+                            </time>
+                            <div class="info">
+                                <a class="title" href="https://mymusicapp-webdev.herokuapp.com/" >MyMusic</a>A web application find music using audio fingerprinting ,follow other artist,register in events </p>
+                            </div>
+                            <div class="social" style="padding-top: 45px">
+                                <ul>
+                                    <li class="github" style="width:33%;"><a target="_blank" href="https://github.com/asimkhan17790/webdev-project-musicApp"><span class="fa fa-github"></span></a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="download" class="full-download">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-5 btn-class" style="left: 30%">
+                    <a class="btn-dwnld" target="_blank" href="https://drive.google.com/file/d/0BwHoTDAfIgV5QzRhdU5tc2ExX2M/view?usp=sharing">View Resume</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="contacto" class="full-section-three bg-contact">
+        <div class="container">
+            <h1 class="title-ct">Contact me.</h1>
+            <p class="separator-ct"></p>
+            <div class="row">
+                <div class="col-md-6 col-xs-12 txt-center">
+                    <p class="icon-ct glyphicon glyphicon-map-marker"></p>
+                    <p class="text-ct">I am from <b>Chandigarh, India</b>.
+                        <br>I live in <b>Boston, Massachusetts</b>.</p>
+                </div>
+                <div class="col-md-6 col-xs-12 txt-center">
+                    <p class="icon-ct glyphicon glyphicon-send"></p>
+                    <p class="text-ct">bhanwala.a@husky.neu.edu
+                        <br>sumit.pec001@gmail.com</p>
+                </div>
+            </div>
+        </div>
+        <footer class="full-footer">
+            <div class="container padding-footer" style="margin-bottom: -130px; ">
+                <div class="row">
+                    <div class="col-sm-8 foo-left">This is my personal website and I hope you enjoyed it.
+                        <br> Sumit Bhanwala</div>
+                </div>
+            </div>
+        </footer>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/smooth-scroll.min.js"></script>
+        <script src="js/main.min.js"></script>
+        <script src="js/owl.carousel.min.js"></script>
+        <script src="js/waypoints.min.js"></script>
+        <script src="js/imagelightbox.min.js"></script>
 </body>
+
 </html>
